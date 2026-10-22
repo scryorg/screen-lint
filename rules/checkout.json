@@ -1,0 +1,374 @@
+{
+ "type": "checkout",
+ "name": "Checkout",
+ "n_read": 64,
+ "n_type": 60,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Back, close or Done control at the top",
+   "key_text": false
+  },
+  "2": {
+   "name": "Main pay or continue button",
+   "key_text": true
+  },
+  "3": {
+   "name": "Payment method row or card fields",
+   "key_text": true
+  },
+  "4": {
+   "name": "Total or amount to pay",
+   "key_text": true
+  },
+  "5": {
+   "name": "Promo, coupon or gift-card entry",
+   "key_text": true
+  },
+  "6": {
+   "name": "Wallet or pay-later brand: Apple Pay, PayPal, Klarna, Afterpay",
+   "key_text": false
+  },
+  "7": {
+   "name": "Itemised cost lines (subtotal, fees, tax)",
+   "key_text": true
+  },
+  "8": {
+   "name": "Product lines with picture, quantity and price",
+   "key_text": false
+  },
+  "9": {
+   "name": "Address or delivery row",
+   "key_text": false
+  },
+  "10": {
+   "name": "Tip choice",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Cart or basket",
+   "lead": "Cart or basket",
+   "n": 16,
+   "expect": [
+    "Product lines with a picture, a quantity and a price",
+    "A back or close control at the top",
+    "One main button low on the screen that moves on to checkout"
+   ]
+  },
+  "v2": {
+   "name": "Order summary",
+   "lead": "Order summary with Place order",
+   "n": 28,
+   "expect": [
+    "A back, close or Done control at the top",
+    "One main Place order button in the bottom third",
+    "A payment method row or card fields",
+    "A total or amount to pay"
+   ]
+  },
+  "v3": {
+   "name": "Payment method step",
+   "lead": "Payment method step",
+   "n": 14,
+   "expect": [
+    "Card fields, saved cards or a list of payment methods",
+    "A back, close or Done control at the top",
+    "Only the way to pay, with no product lines and no cost breakdown"
+   ]
+  },
+  "v4": {
+   "name": "Quick pay sheet",
+   "lead": "Quick pay sheet",
+   "n": 5,
+   "expect": []
+  }
+ },
+ "key_text": [
+  2,
+  3,
+  4,
+  5,
+  7
+ ],
+ "not_checked": [
+  "What happens after a tap: whether the total moves when a tip, a code or a method is chosen, and whether the charge matches the amount shown.",
+  "Whether the main button turns on once the required rows are filled: one screen shows one state only."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 2,
+   "of": 60,
+   "says": "The main button is greyed out while the rows above still ask for an address or a payment method.",
+   "why": "The main button is greyed out while the rows above still read Enter shipping address and Select payment method. Seen on 2 of 60 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 11,
+   "of": 60,
+   "says": "Item prices or fields are shown but the total is out of view, so the cost is not visible before the button.",
+   "why": "The page shows item prices or fields but the total is out of view, so the cost is not visible before the button. Seen on 11 of 60 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 3,
+   "of": 60,
+   "says": "Fees are small grey text with an info icon beside each, so they read harder than the total.",
+   "why": "Cost lines are small grey text with an info icon beside each fee, which makes the fees harder to read than the total. Seen on 3 of 60 checked screens."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 42,
+   "of": 60,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No main pay or continue button on the screen.",
+   "why": "42 of 60 checked screens have \"Main pay or continue button\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 36,
+   "of": 60,
+   "low": 0.47,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "No payment method row or card fields on the screen.",
+   "why": "36 of 60 checked screens have \"Payment method row or card fields\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 54,
+   "of": 60,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back, close or Done control.",
+   "why": "54 of 60 checked screens have \"Back, close or Done control at the top\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 52,
+   "of": 54,
+   "low": 0.87,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back, close or Done control is not in the top third of the screen.",
+   "why": "Of the 54 screens that have \"Back, close or Done control at the top\", 52 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 37,
+   "of": 42,
+   "low": 0.75,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The main pay or continue button is not in the bottom third of the screen.",
+   "why": "Of the 42 screens that have \"Main pay or continue button\", 37 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 47,
+   "of": 54,
+   "low": 0.76,
+   "says": "More than one back, close or Done control competes on the screen.",
+   "why": "Of the 54 screens that have \"Back, close or Done control at the top\", 47 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 41,
+   "of": 42,
+   "low": 0.88,
+   "says": "More than one main pay or continue button.",
+   "why": "Of the 42 screens that have \"Main pay or continue button\", 41 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 31,
+   "of": 34,
+   "low": 0.77,
+   "says": "The total or amount to pay is drawn in more than one place.",
+   "why": "Of the 34 screens that have \"Total or amount to pay\", 31 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 14,
+   "of": 17,
+   "low": 0.59,
+   "says": "More than one promo, coupon or gift-card entry.",
+   "why": "Of the 17 screens that have \"Promo, coupon or gift-card entry\", 14 show exactly one."
+  },
+  {
+   "id": "v1/exempt/3",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 3,
+   "exempts": [
+    "presence/3"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 16,
+   "low": 0.01,
+   "says": "Cart or basket screens are not checked for \"Payment method row or card fields\".",
+   "why": "Only 1 of 16 Cart or basket screens have it, so presence/3 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v1/presence/8",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 8,
+   "seen": 12,
+   "of": 16,
+   "low": 0.51,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "A cart with no product lines showing a picture, a quantity and a price.",
+   "why": "12 of 16 Cart or basket screens have \"Product lines with picture, quantity and price\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

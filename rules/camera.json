@@ -1,0 +1,457 @@
+{
+ "type": "camera",
+ "name": "Camera",
+ "n_read": 64,
+ "n_type": 51,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Black or near-black surround",
+   "key_text": false
+  },
+  "2": {
+   "name": "Large round button at the bottom centre",
+   "key_text": false
+  },
+  "3": {
+   "name": "Close, cancel or back control",
+   "key_text": false
+  },
+  "4": {
+   "name": "Frame, bracket or circle that shows where to aim or how the photo is cropped",
+   "key_text": false
+  },
+  "5": {
+   "name": "One line of instruction or status text over the view",
+   "key_text": true
+  },
+  "6": {
+   "name": "Flash control",
+   "key_text": false
+  },
+  "7": {
+   "name": "Mode, zoom or settings row",
+   "key_text": true
+  },
+  "8": {
+   "name": "Camera flip button",
+   "key_text": false
+  },
+  "9": {
+   "name": "Review controls after the shot",
+   "key_text": true
+  },
+  "10": {
+   "name": "Shortcut to the photo library",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Photo or video capture",
+   "lead": "Photo or video capture",
+   "n": 19,
+   "expect": [
+    "A black or near-black surround around the live view",
+    "One big round capture button at the bottom centre",
+    "A mode, zoom or settings row"
+   ]
+  },
+  "v2": {
+   "name": "Guided scan",
+   "lead": "Guided scan",
+   "n": 22,
+   "expect": [
+    "A black or near-black surround around the view",
+    "A small close or back control, usually at the top",
+    "A frame or bracket that shows where to aim",
+    "One line of instruction or status text"
+   ]
+  },
+  "v3": {
+   "name": "AR and effects",
+   "lead": "AR and effects",
+   "n": 7,
+   "expect": []
+  },
+  "v4": {
+   "name": "Review after capture",
+   "lead": "Review after capture",
+   "n": 9,
+   "expect": [
+    "Two review controls at the bottom, such as retake and use photo",
+    "A black or near-black surround behind the shot",
+    "No big round capture button, because the shot is already taken",
+    "No aiming frame"
+   ]
+  }
+ },
+ "key_text": [
+  5,
+  7,
+  9
+ ],
+ "not_checked": [
+  "What happens after the tap on the capture button: one screen cannot show the shot being taken, the sound or the step that follows.",
+  "Whether the live view follows the hand, focuses and zooms: a still image cannot show motion.",
+  "Whether a scan reads the object and what message appears when it cannot: only one state is visible."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 51,
+   "says": "The instruction is grey text on a pale photo and is hard to read.",
+   "why": "The instruction is grey text on a light grey photo and is hard to read. Seen on 1 of 51 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 3,
+   "of": 51,
+   "says": "The controls are dark grey on a black view and almost vanish.",
+   "why": "The controls are dark grey on black and almost disappear. Seen on 3 of 51 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 51,
+   "says": "A banner and a dialog both ask a question over the viewfinder at the same time.",
+   "why": "A banner and a dialog both ask a question over the viewfinder at the same time. Seen on 1 of 51 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 43,
+   "of": 51,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No black or near-black surround; the view and its controls sit on a light screen.",
+   "why": "43 of 51 checked screens have \"Black or near-black surround\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 37,
+   "of": 51,
+   "low": 0.59,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No close, cancel or back control.",
+   "why": "37 of 51 checked screens have \"Close, cancel or back control\"."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 23,
+   "of": 24,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The big round capture button is not in the bottom third.",
+   "why": "Of the 24 screens that have \"Large round button at the bottom centre\", 23 put it in the bottom third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "top",
+   "seen": 32,
+   "of": 37,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The close, cancel or back control is not in the top third.",
+   "why": "Of the 37 screens that have \"Close, cancel or back control\", 32 put it in the top third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "mid",
+   "seen": 20,
+   "of": 23,
+   "low": 0.68,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The aiming frame is not in the middle of the screen.",
+   "why": "Of the 23 screens that have \"Frame, bracket or circle that shows where to aim or how the photo is cropped\", 20 put it in the mid third."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 24,
+   "of": 24,
+   "low": 0.86,
+   "says": "More than one big round button at the bottom centre.",
+   "why": "Of the 24 screens that have \"Large round button at the bottom centre\", 24 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 37,
+   "of": 37,
+   "low": 0.91,
+   "says": "More than one close, cancel or back control.",
+   "why": "Of the 37 screens that have \"Close, cancel or back control\", 37 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 23,
+   "of": 23,
+   "low": 0.86,
+   "says": "More than one aiming frame or bracket.",
+   "why": "Of the 23 screens that have \"Frame, bracket or circle that shows where to aim or how the photo is cropped\", 23 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 23,
+   "of": 24,
+   "low": 0.8,
+   "says": "More than one line of instruction or status text over the view.",
+   "why": "Of the 24 screens that have \"One line of instruction or status text over the view\", 23 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "says": "More than one flash control.",
+   "why": "Of the 15 screens that have \"Flash control\", 15 show exactly one."
+  },
+  {
+   "id": "count/10",
+   "kind": "convention",
+   "test": "count",
+   "part": 10,
+   "severity": "hint",
+   "seen": 14,
+   "of": 14,
+   "low": 0.78,
+   "says": "More than one shortcut to the photo library.",
+   "why": "Of the 14 screens that have \"Shortcut to the photo library\", 14 show exactly one."
+  },
+  {
+   "id": "v1/presence/2",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 2,
+   "seen": 15,
+   "of": 19,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A photo or video capture screen with no big round capture button.",
+   "why": "15 of 19 Photo or video capture screens have \"Large round button at the bottom centre\"."
+  },
+  {
+   "id": "v2/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 4,
+   "seen": 16,
+   "of": 22,
+   "low": 0.52,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A guided scan with no frame or bracket to aim with.",
+   "why": "16 of 22 Guided scan screens have \"Frame, bracket or circle that shows where to aim or how the photo is cropped\"."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 19,
+   "of": 22,
+   "low": 0.67,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A guided scan with no line of instruction or status text.",
+   "why": "19 of 22 Guided scan screens have \"One line of instruction or status text over the view\"."
+  },
+  {
+   "id": "v4/exempt/2",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 2,
+   "exempts": [
+    "position/2"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 9,
+   "low": 0.02,
+   "says": "Review after capture screens are not checked for \"Large round button at the bottom centre\".",
+   "why": "Only 1 of 9 Review after capture screens have it, so position/2 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 9,
+   "low": 0.06,
+   "says": "Review after capture screens are not checked for \"Frame, bracket or circle that shows where to aim or how the photo is cropped\".",
+   "why": "Only 2 of 9 Review after capture screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/presence/9",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 9,
+   "seen": 9,
+   "of": 9,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A review screen with no retake, accept or edit controls.",
+   "why": "9 of 9 Review after capture screens have \"Review controls after the shot\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

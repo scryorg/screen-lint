@@ -1,0 +1,514 @@
+{
+ "type": "setup",
+ "name": "Setup",
+ "n_read": 64,
+ "n_type": 55,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Heading phrased as a question or instruction",
+   "key_text": true
+  },
+  "2": {
+   "name": "Filled button (Next, Continue, Save, Done)",
+   "key_text": true
+  },
+  "3": {
+   "name": "Back, close or dismiss at the top",
+   "key_text": false
+  },
+  "4": {
+   "name": "Tappable answer choices (rows, cards, chips, tiles)",
+   "key_text": true
+  },
+  "5": {
+   "name": "Small line under the heading about why or how to answer",
+   "key_text": true
+  },
+  "6": {
+   "name": "Typed answer",
+   "key_text": true
+  },
+  "7": {
+   "name": "Keyboard or keypad open",
+   "key_text": false
+  },
+  "8": {
+   "name": "Picture or illustration",
+   "key_text": false
+  },
+  "9": {
+   "name": "Progress cue (bar, steps)",
+   "key_text": false
+  },
+  "10": {
+   "name": "Skip or later option",
+   "key_text": true
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Pick from a list",
+   "lead": "Pick from a list",
+   "n": 24,
+   "expect": [
+    "Tappable rows, cards or chips in the middle of the screen",
+    "A heading at the top that asks the question",
+    "A filled button pinned at the bottom",
+    "A back or close control at the top"
+   ]
+  },
+  "v2": {
+   "name": "Type one answer",
+   "lead": "Type one answer",
+   "n": 14,
+   "expect": [
+    "A heading at the top that asks for one thing",
+    "A field to type in",
+    "A back control at the top",
+    "The keyboard open under the field"
+   ]
+  },
+  "v3": {
+   "name": "Connect something",
+   "lead": "Connect something",
+   "n": 8,
+   "expect": [
+    "A heading that names what to connect",
+    "A small line under it saying why",
+    "A picture or illustration in the middle",
+    "A filled button pinned at the bottom"
+   ]
+  },
+  "v4": {
+   "name": "Profile form",
+   "lead": "Profile form",
+   "n": 10,
+   "expect": [
+    "A filled button pinned at the bottom",
+    "A small line under the heading",
+    "Tappable choices such as chips or rows",
+    "A heading at the top"
+   ]
+  }
+ },
+ "key_text": [
+  1,
+  2,
+  4,
+  5,
+  6,
+  10
+ ],
+ "not_checked": [
+  "What happens after the tap: one screenshot cannot show whether a pale button wakes up or what the next question is.",
+  "Whether a list scrolls: a cut-off row is read from the picture, but the part below the fold is not visible."
+ ],
+ "candidates": [
+  {
+   "name": "Add a profile photo",
+   "count": 2
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "low_label",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 5,
+   "of": 55,
+   "says": "The label on the main button is faint against its fill.",
+   "why": "The main button is pale until the fields are filled, and nothing points to the missing one. Seen on 5 of 55 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 5,
+   "of": 55,
+   "says": "The list runs under the pinned button and the last choices are cut off.",
+   "why": "Choice lists run under the pinned button, so the last options are cut off. Seen on 5 of 55 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "part_area_over:5:15",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 0,
+   "of": 55,
+   "says": "The small line under the heading grows into a long block of text.",
+   "why": "A long paragraph in small type sits above the buttons. Seen on 0 of 55 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 49,
+   "of": 55,
+   "low": 0.78,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No heading asks the question or gives the instruction.",
+   "why": "49 of 55 checked screens have \"Heading phrased as a question or instruction\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 35,
+   "of": 55,
+   "low": 0.5,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back or close control at the top.",
+   "why": "35 of 55 checked screens have \"Back, close or dismiss at the top\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 45,
+   "of": 55,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No filled button to move on.",
+   "why": "45 of 55 checked screens have \"Filled button (Next, Continue, Save, Done)\"."
+  },
+  {
+   "id": "presence/5",
+   "kind": "convention",
+   "test": "presence",
+   "part": 5,
+   "seen": 33,
+   "of": 55,
+   "low": 0.47,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "No small line under the heading says why it asks or how to answer.",
+   "why": "33 of 55 checked screens have \"Small line under the heading about why or how to answer\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 40,
+   "of": 49,
+   "low": 0.69,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The heading sits below the top third of the screen.",
+   "why": "Of the 49 screens that have \"Heading phrased as a question or instruction\", 40 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 33,
+   "of": 45,
+   "low": 0.59,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The filled button is not in the bottom third of the screen.",
+   "why": "Of the 45 screens that have \"Filled button (Next, Continue, Save, Done)\", 33 put it in the bottom third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "top",
+   "seen": 35,
+   "of": 35,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back or close control is not at the top of the screen.",
+   "why": "Of the 35 screens that have \"Back, close or dismiss at the top\", 35 put it in the top third."
+  },
+  {
+   "id": "position/9",
+   "kind": "convention",
+   "test": "position",
+   "part": 9,
+   "third": "top",
+   "seen": 11,
+   "of": 15,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The progress cue is not at the top of the screen.",
+   "why": "Of the 15 screens that have \"Progress cue (bar, steps)\", 11 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 47,
+   "of": 49,
+   "low": 0.86,
+   "says": "More than one heading competes to ask the question.",
+   "why": "Of the 49 screens that have \"Heading phrased as a question or instruction\", 47 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 43,
+   "of": 45,
+   "low": 0.85,
+   "says": "More than one filled button asks for the next step.",
+   "why": "Of the 45 screens that have \"Filled button (Next, Continue, Save, Done)\", 43 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 30,
+   "of": 35,
+   "low": 0.71,
+   "says": "More than one back or close control sits at the top.",
+   "why": "Of the 35 screens that have \"Back, close or dismiss at the top\", 30 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 31,
+   "of": 33,
+   "low": 0.8,
+   "says": "More than one small line sits under the heading.",
+   "why": "Of the 33 screens that have \"Small line under the heading about why or how to answer\", 31 show exactly one."
+  },
+  {
+   "id": "count/9",
+   "kind": "convention",
+   "test": "count",
+   "part": 9,
+   "severity": "hint",
+   "seen": 14,
+   "of": 15,
+   "low": 0.7,
+   "says": "More than one progress cue is on the screen.",
+   "why": "Of the 15 screens that have \"Progress cue (bar, steps)\", 14 show exactly one."
+  },
+  {
+   "id": "v1/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 4,
+   "seen": 24,
+   "of": 24,
+   "low": 0.86,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A pick-from-a-list screen shows no tappable choices.",
+   "why": "24 of 24 Pick from a list screens have \"Tappable answer choices (rows, cards, chips, tiles)\"."
+  },
+  {
+   "id": "v2/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 6,
+   "seen": 14,
+   "of": 14,
+   "low": 0.78,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A type-one-answer screen has no field to type in.",
+   "why": "14 of 14 Type one answer screens have \"Typed answer\"."
+  },
+  {
+   "id": "v2/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 7,
+   "seen": 10,
+   "of": 14,
+   "low": 0.45,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The keyboard is not open on a type-one-answer screen.",
+   "why": "10 of 14 Type one answer screens have \"Keyboard or keypad open\"."
+  },
+  {
+   "id": "v2/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 14,
+   "low": 0.08,
+   "says": "Type one answer screens are not checked for \"Progress cue (bar, steps)\".",
+   "why": "Only 3 of 14 Type one answer screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 0,
+   "of": 8,
+   "low": 0.0,
+   "says": "Connect something screens are not checked for \"Progress cue (bar, steps)\".",
+   "why": "Only 0 of 8 Connect something screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 4,
+   "seen": 7,
+   "of": 10,
+   "low": 0.4,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "A profile form shows no tappable choices.",
+   "why": "7 of 10 Profile form screens have \"Tappable answer choices (rows, cards, chips, tiles)\"."
+  },
+  {
+   "id": "v4/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Profile form screens are not checked for \"Progress cue (bar, steps)\".",
+   "why": "Only 2 of 10 Profile form screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

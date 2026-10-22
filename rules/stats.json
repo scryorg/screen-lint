@@ -1,0 +1,396 @@
+{
+ "type": "stats",
+ "name": "Stats",
+ "n_read": 64,
+ "n_type": 56,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Chart, gauge, ring or other drawn graphic",
+   "key_text": false
+  },
+  "2": {
+   "name": "Time period named or switchable",
+   "key_text": true
+  },
+  "3": {
+   "name": "Short headings that split the blocks",
+   "key_text": false
+  },
+  "4": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "5": {
+   "name": "One large headline number or score",
+   "key_text": true
+  },
+  "6": {
+   "name": "Rows of a label and a right-aligned value",
+   "key_text": true
+  },
+  "7": {
+   "name": "One plain sentence that reads the numbers",
+   "key_text": true
+  },
+  "8": {
+   "name": "Zeros or an empty message where figures would go",
+   "key_text": true
+  },
+  "9": {
+   "name": "Filled button in the bottom third",
+   "key_text": false
+  },
+  "10": {
+   "name": "Opens as a sheet over a dimmed screen",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Chart over a period",
+   "lead": "Chart over a period",
+   "n": 24,
+   "expect": [
+    "One chart or drawn graphic, most often a single one near the middle of the screen",
+    "The period it covers is named or switchable, usually near the top",
+    "Short headings split the screen into blocks"
+   ]
+  },
+  "v2": {
+   "name": "Score or gauge",
+   "lead": "Score or gauge",
+   "n": 12,
+   "expect": [
+    "A ring, gauge or other drawing that carries the score",
+    "One large score or percent in display-size type",
+    "Short headings split the rows that explain the score"
+   ]
+  },
+  "v3": {
+   "name": "Table of figures",
+   "lead": "Table of figures",
+   "n": 10,
+   "expect": [
+    "Rows of a label and a right-aligned value are the main content",
+    "The period is named or switchable, usually near the top",
+    "Short headings split the rows into blocks"
+   ]
+  },
+  "v4": {
+   "name": "Ranking",
+   "lead": "Ranking",
+   "n": 7,
+   "expect": []
+  }
+ },
+ "key_text": [
+  2,
+  5,
+  6,
+  7,
+  8
+ ],
+ "not_checked": [
+  "What a period switch, a tap on a row or a swipe along a card row does: one screenshot shows a single state.",
+  "Whether the figures are true or the chart scale is honest: the lint reads the layout, not the data.",
+  "The empty version of the screen when this capture shows data, and the other way round."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 7,
+   "of": 56,
+   "says": "Axis, column and band labels are set very small and in pale grey against their background.",
+   "why": "Axis and column labels are set very small and in pale grey. Seen on 7 of 56 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 3,
+   "of": 56,
+   "says": "A row of cards runs off the right edge with no dots or count to show how many more there are.",
+   "why": "A row of cards is cut at the right edge with no sign of how many more there are. Seen on 3 of 56 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 56,
+   "says": "The empty message gives no reason and no next step.",
+   "why": "A no-data message gives no reason and no next step: No Data Available above an empty chart area. Seen on 2 of 56 checked screens."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 42,
+   "of": 56,
+   "low": 0.62,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No short headings split the screen into blocks.",
+   "why": "42 of 56 checked screens have \"Short headings that split the blocks\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 39,
+   "of": 56,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No chart, gauge, ring or other drawing of the figures.",
+   "why": "39 of 56 checked screens have \"Chart, gauge, ring or other drawn graphic\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 43,
+   "of": 56,
+   "low": 0.64,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No time period is named or switchable.",
+   "why": "43 of 56 checked screens have \"Time period named or switchable\"."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "bottom",
+   "seen": 22,
+   "of": 22,
+   "low": 0.85,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not at the bottom of the screen.",
+   "why": "Of the 22 screens that have \"Bottom tab bar\", 22 put it in the bottom third."
+  },
+  {
+   "id": "position/9",
+   "kind": "convention",
+   "test": "position",
+   "part": 9,
+   "third": "bottom",
+   "seen": 17,
+   "of": 18,
+   "low": 0.74,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The filled button is not in the bottom third.",
+   "why": "Of the 18 screens that have \"Filled button in the bottom third\", 17 put it in the bottom third."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 22,
+   "of": 22,
+   "low": 0.85,
+   "says": "More than one tab bar.",
+   "why": "Of the 22 screens that have \"Bottom tab bar\", 22 show exactly one."
+  },
+  {
+   "id": "count/9",
+   "kind": "convention",
+   "test": "count",
+   "part": 9,
+   "severity": "hint",
+   "seen": 17,
+   "of": 18,
+   "low": 0.74,
+   "says": "More than one filled button competes for the tap at the bottom.",
+   "why": "Of the 18 screens that have \"Filled button in the bottom third\", 17 show exactly one."
+  },
+  {
+   "id": "v1/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 5,
+   "of": 24,
+   "low": 0.09,
+   "says": "Chart over a period screens are not checked for \"Filled button in the bottom third\".",
+   "why": "Only 5 of 24 Chart over a period screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 12,
+   "low": 0.09,
+   "says": "Score or gauge screens are not checked for \"Bottom tab bar\".",
+   "why": "Only 3 of 12 Score or gauge screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 11,
+   "of": 12,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "A score screen with no large score or headline number.",
+   "why": "11 of 12 Score or gauge screens have \"One large headline number or score\"."
+  },
+  {
+   "id": "v3/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v3",
+   "part": 6,
+   "seen": 10,
+   "of": 10,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "A table screen with no rows of a label and a right-aligned value.",
+   "why": "10 of 10 Table of figures screens have \"Rows of a label and a right-aligned value\"."
+  },
+  {
+   "id": "v3/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Table of figures screens are not checked for \"Filled button in the bottom third\".",
+   "why": "Only 2 of 10 Table of figures screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

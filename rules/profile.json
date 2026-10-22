@@ -1,0 +1,533 @@
+{
+ "type": "profile",
+ "name": "Profile",
+ "n_read": 64,
+ "n_type": 54,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Avatar or portrait",
+   "key_text": false
+  },
+  "2": {
+   "name": "Name or handle as a heading in the page",
+   "key_text": false
+  },
+  "3": {
+   "name": "List or grid of what the person made, posted or sold",
+   "key_text": false
+  },
+  "4": {
+   "name": "Back or close control",
+   "key_text": false
+  },
+  "5": {
+   "name": "Icons at the top right (gear, share, more)",
+   "key_text": false
+  },
+  "6": {
+   "name": "Bottom tab bar still visible",
+   "key_text": false
+  },
+  "7": {
+   "name": "Row of counts (followers, wins, ratings)",
+   "key_text": true
+  },
+  "8": {
+   "name": "Tabs under the header",
+   "key_text": true
+  },
+  "9": {
+   "name": "Follow, add or edit button near the name",
+   "key_text": true
+  },
+  "10": {
+   "name": "Banner or cover picture behind the avatar",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Creator or social profile",
+   "lead": "Creator or social profile",
+   "n": 28,
+   "expect": [
+    "An avatar near the top, with the name set as a heading close to it",
+    "A back control at the top left",
+    "Gear, share or more icons at the top right",
+    "A list or grid of the person's posts below the header"
+   ]
+  },
+  "v2": {
+   "name": "Own account profile",
+   "lead": "Own account profile",
+   "n": 11,
+   "expect": [
+    "An avatar at the top, with the name beside or under it",
+    "A gear or other icon at the top right",
+    "The bottom tab bar still in view",
+    "The person's own posts or items below the header"
+   ]
+  },
+  "v3": {
+   "name": "Seller or business page",
+   "lead": "Seller, business or driver page",
+   "n": 8,
+   "expect": [
+    "A back control at the top left",
+    "A name with an avatar or logo near the top",
+    "A row of ratings or other counts that help a stranger decide",
+    "No bottom tab bar"
+   ]
+  },
+  "v4": {
+   "name": "Sheet or card profile",
+   "lead": "Profile as a sheet or card",
+   "n": 9,
+   "expect": [
+    "A close control or a Done button at the top",
+    "No bottom tab bar, because the card sits over another screen",
+    "No tabs under the header"
+   ]
+  }
+ },
+ "key_text": [
+  7,
+  8,
+  9
+ ],
+ "not_checked": [
+  "What happens after a tap on Follow, Edit or the top right icons: one screen cannot show it.",
+  "Whether the tabs switch the list below and whether the list loads more as it scrolls.",
+  "A profile with nothing posted yet: that is a second state, and only the state on the screen is graded.",
+  "The name heading's contrast and size are left out of the checks: on a few screens the handle itself carries the name of the screen source, which the report cannot print."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 54,
+   "says": "A long bio with no name heading and no photo, so the reader cannot tell who it is about.",
+   "why": "The sheet shows a long bio but neither the person's name nor a photo, so the reader cannot tell who it is without reading the text. Seen on 1 of 54 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 3,
+   "of": 54,
+   "says": "A toast banner sits over the top of the page and covers the avatar or the name.",
+   "why": "A toast banner covers the top of the page: it cuts across the avatar on Hypelist and the header on HEY. Seen on 3 of 54 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 54,
+   "says": "The counts are set in small grey text over a photo and are hard to read.",
+   "why": "The stats are set in small grey text over a photo and are hard to read. Seen on 2 of 54 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 44,
+   "of": 54,
+   "low": 0.69,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No avatar or portrait.",
+   "why": "44 of 54 checked screens have \"Avatar or portrait\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 41,
+   "of": 54,
+   "low": 0.63,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No name or handle as a heading in the page.",
+   "why": "41 of 54 checked screens have \"Name or handle as a heading in the page\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 42,
+   "of": 54,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back or close control.",
+   "why": "42 of 54 checked screens have \"Back or close control\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 41,
+   "of": 44,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The avatar sits below the top third of the screen.",
+   "why": "Of the 44 screens that have \"Avatar or portrait\", 41 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 31,
+   "of": 41,
+   "low": 0.61,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The name heading sits below the top third of the screen.",
+   "why": "Of the 41 screens that have \"Name or handle as a heading in the page\", 31 put it in the top third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "top",
+   "seen": 39,
+   "of": 42,
+   "low": 0.81,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back or close control is not in the top third.",
+   "why": "Of the 42 screens that have \"Back or close control\", 39 put it in the top third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "top",
+   "seen": 30,
+   "of": 32,
+   "low": 0.8,
+   "severity": "hint",
+   "agreement": 0.6,
+   "says": "The gear, share or more icons sit below the top third.",
+   "why": "Of the 32 screens that have \"Icons at the top right (gear, share, more)\", 30 put it in the top third. Held at a hint: a second reader agrees on whether it is there on only 60% of the screens read twice."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "bottom",
+   "seen": 22,
+   "of": 22,
+   "low": 0.85,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The bottom tab bar is not at the bottom of the screen.",
+   "why": "Of the 22 screens that have \"Bottom tab bar still visible\", 22 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 43,
+   "of": 44,
+   "low": 0.88,
+   "says": "More than one avatar competes for the eye.",
+   "why": "Of the 44 screens that have \"Avatar or portrait\", 43 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 41,
+   "of": 41,
+   "low": 0.91,
+   "says": "The name is set as a heading more than once.",
+   "why": "Of the 41 screens that have \"Name or handle as a heading in the page\", 41 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 42,
+   "of": 42,
+   "low": 0.92,
+   "says": "More than one back or close control.",
+   "why": "Of the 42 screens that have \"Back or close control\", 42 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 22,
+   "of": 22,
+   "low": 0.85,
+   "says": "More than one bottom tab bar.",
+   "why": "Of the 22 screens that have \"Bottom tab bar still visible\", 22 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 21,
+   "of": 26,
+   "low": 0.62,
+   "says": "More than one row of counts.",
+   "why": "Of the 26 screens that have \"Row of counts (followers, wins, ratings)\", 21 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 20,
+   "of": 20,
+   "low": 0.84,
+   "says": "More than one set of tabs under the header.",
+   "why": "Of the 20 screens that have \"Tabs under the header\", 20 show exactly one."
+  },
+  {
+   "id": "count/9",
+   "kind": "convention",
+   "test": "count",
+   "part": 9,
+   "severity": "hint",
+   "seen": 23,
+   "of": 24,
+   "low": 0.8,
+   "says": "More than one follow, add or edit button near the name.",
+   "why": "Of the 24 screens that have \"Follow, add or edit button near the name\", 23 show exactly one."
+  },
+  {
+   "id": "v1/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 3,
+   "seen": 21,
+   "of": 28,
+   "low": 0.57,
+   "severity": "hint",
+   "agreement": 0.6,
+   "says": "No list or grid of what the person made or posted.",
+   "why": "21 of 28 Creator or social profile screens have \"List or grid of what the person made, posted or sold\". Held at a hint: a second reader agrees on whether it is there on only 60% of the screens read twice."
+  },
+  {
+   "id": "v2/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 3,
+   "seen": 8,
+   "of": 11,
+   "low": 0.43,
+   "severity": "hint",
+   "agreement": 0.6,
+   "says": "No list or grid of the person's own posts or items.",
+   "why": "8 of 11 Own account profile screens have \"List or grid of what the person made, posted or sold\"."
+  },
+  {
+   "id": "v2/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 4,
+   "exempts": [
+    "presence/4",
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 11,
+   "low": 0.1,
+   "says": "Own account profile screens are not checked for \"Back or close control\".",
+   "why": "Only 3 of 11 Own account profile screens have it, so presence/4 and position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 9,
+   "of": 11,
+   "low": 0.52,
+   "severity": "hint",
+   "agreement": 0.6,
+   "says": "No gear or other icon at the top right of an own profile.",
+   "why": "9 of 11 Own account profile screens have \"Icons at the top right (gear, share, more)\". Held at a hint: a second reader agrees on whether it is there on only 60% of the screens read twice."
+  },
+  {
+   "id": "v2/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 6,
+   "seen": 9,
+   "of": 11,
+   "low": 0.52,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No bottom tab bar on an own profile.",
+   "why": "9 of 11 Own account profile screens have \"Bottom tab bar still visible\"."
+  },
+  {
+   "id": "v3/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 8,
+   "low": 0.02,
+   "says": "Seller or business page screens are not checked for \"Bottom tab bar still visible\".",
+   "why": "Only 1 of 8 Seller or business page screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 9,
+   "low": 0.02,
+   "says": "Sheet or card profile screens are not checked for \"Bottom tab bar still visible\".",
+   "why": "Only 1 of 9 Sheet or card profile screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

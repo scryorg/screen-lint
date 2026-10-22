@@ -1,0 +1,363 @@
+{
+ "type": "chat",
+ "name": "Chat",
+ "n_read": 64,
+ "n_type": 55,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Header with back, close or menu and a title",
+   "key_text": true
+  },
+  "2": {
+   "name": "Text field pinned to the bottom edge",
+   "key_text": true
+  },
+  "3": {
+   "name": "Send, mic or attach button beside the field",
+   "key_text": false
+  },
+  "4": {
+   "name": "Messages in the thread",
+   "key_text": true
+  },
+  "5": {
+   "name": "Own message in a filled bubble on the right",
+   "key_text": true
+  },
+  "6": {
+   "name": "Time stamp or status line",
+   "key_text": false
+  },
+  "7": {
+   "name": "Picture or card inside the thread or the field",
+   "key_text": false
+  },
+  "8": {
+   "name": "Starter buttons or a hello link before the first message",
+   "key_text": false
+  },
+  "9": {
+   "name": "Keyboard open",
+   "key_text": false
+  },
+  "10": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Person or group thread",
+   "lead": "Person or group thread",
+   "n": 20,
+   "expect": [
+    "A header at the top with the name of the person or group",
+    "Messages stacked in the thread, with a time stamp or status line",
+    "A text field pinned at the bottom of the screen",
+    "A send, mic or attach button beside the field"
+   ]
+  },
+  "v2": {
+   "name": "AI assistant, typed",
+   "lead": "AI assistant, typed",
+   "n": 11,
+   "expect": [
+    "A header at the top with the name of the assistant",
+    "A text field at the bottom of the screen",
+    "A send, mic or attach button beside the field",
+    "Replies and questions stacked in the thread"
+   ]
+  },
+  "v3": {
+   "name": "Support or inquiry chat",
+   "lead": "Support or inquiry chat",
+   "n": 22,
+   "expect": [
+    "A header at the top with a title and a back or close control",
+    "Messages stacked in the thread, replies from a bot or an agent",
+    "A text field pinned at the bottom of the screen",
+    "A send, mic or attach button beside the field"
+   ]
+  },
+  "v4": {
+   "name": "Voice mode",
+   "lead": "Voice mode",
+   "n": 2,
+   "expect": []
+  }
+ },
+ "key_text": [
+  1,
+  2,
+  4,
+  5
+ ],
+ "not_checked": [
+  "What happens after a send: the typing bubble, the reply, and a send button that goes from muted to coloured once text is typed need a second state.",
+  "Voice mode has no thread and no field by design, so the presence rules fire on it; the rules are kept because every typed chat has them.",
+  "Whether the thread scrolls to the newest message and how the field moves when the keyboard opens: motion cannot be read from one screen."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 55,
+   "says": "A support thread with no way to reply: a nearly blank page with one waiting line or a short greeting, and no field or send button.",
+   "why": "A support thread that shows no way to reply: the page is mostly blank with one waiting line or a short greeting. Seen on 1 of 55 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "low_label",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 15,
+   "of": 55,
+   "says": "The label on the send button is faint against its fill.",
+   "why": "The placeholder and the Send label are pale grey on white and hard to read. Seen on 15 of 55 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 55,
+   "says": "An attached picture is drawn as a solid black block.",
+   "why": "An attached picture appears as a solid black block. Seen on 2 of 55 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 51,
+   "of": 55,
+   "low": 0.83,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No header with a title and a back, close or menu control.",
+   "why": "51 of 55 checked screens have \"Header with back, close or menu and a title\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 42,
+   "of": 55,
+   "low": 0.64,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No messages in the thread.",
+   "why": "42 of 55 checked screens have \"Messages in the thread\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 44,
+   "of": 55,
+   "low": 0.68,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No send, mic or attach button beside the field.",
+   "why": "44 of 55 checked screens have \"Send, mic or attach button beside the field\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 46,
+   "of": 55,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No text field at the bottom of the screen.",
+   "why": "46 of 55 checked screens have \"Text field pinned to the bottom edge\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 51,
+   "of": 51,
+   "low": 0.93,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The header does not sit in the top third of the screen.",
+   "why": "Of the 51 screens that have \"Header with back, close or menu and a title\", 51 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 34,
+   "of": 46,
+   "low": 0.6,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The text field does not sit in the bottom third of the screen.",
+   "why": "Of the 46 screens that have \"Text field pinned to the bottom edge\", 34 put it in the bottom third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "bottom",
+   "seen": 32,
+   "of": 44,
+   "low": 0.58,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The send, mic or attach button does not sit in the bottom third, next to the field.",
+   "why": "Of the 44 screens that have \"Send, mic or attach button beside the field\", 32 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 50,
+   "of": 51,
+   "low": 0.9,
+   "says": "More than one header on the screen.",
+   "why": "Of the 51 screens that have \"Header with back, close or menu and a title\", 50 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 46,
+   "of": 46,
+   "low": 0.92,
+   "says": "More than one text field on the screen.",
+   "why": "Of the 46 screens that have \"Text field pinned to the bottom edge\", 46 show exactly one."
+  },
+  {
+   "id": "v1/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 6,
+   "seen": 15,
+   "of": 20,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A person or group thread with no time stamp or status line.",
+   "why": "15 of 20 Person or group thread screens have \"Time stamp or status line\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

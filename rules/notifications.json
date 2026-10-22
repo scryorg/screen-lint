@@ -1,0 +1,635 @@
+{
+ "type": "notifications",
+ "name": "Notifications",
+ "n_read": 64,
+ "n_type": 59,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Title that names the screen",
+   "key_text": true
+  },
+  "2": {
+   "name": "Back arrow or close X at the top",
+   "key_text": false
+  },
+  "3": {
+   "name": "A time on each item",
+   "key_text": true
+  },
+  "4": {
+   "name": "Avatar, icon or thumbnail at the left of the item",
+   "key_text": false
+  },
+  "5": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "6": {
+   "name": "Unread dot or tinted row",
+   "key_text": false
+  },
+  "7": {
+   "name": "Button or action row on the item",
+   "key_text": true
+  },
+  "8": {
+   "name": "Headings that group by time",
+   "key_text": true
+  },
+  "9": {
+   "name": "Tabs that filter the list",
+   "key_text": false
+  },
+  "10": {
+   "name": "Gear, Manage or channel setting in the header",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Event rows",
+   "lead": "Event rows",
+   "n": 26,
+   "expect": [
+    "An icon or avatar at the left of each row",
+    "A time on each row",
+    "A title that names the screen",
+    "Nothing to press on the rows"
+   ]
+  },
+  "v2": {
+   "name": "Answer button rows",
+   "lead": "Rows with an answer button",
+   "n": 11,
+   "expect": [
+    "A button or action row on every item",
+    "A time on most items",
+    "An avatar, icon or thumbnail at the left of the items",
+    "A title that names the screen"
+   ]
+  },
+  "v3": {
+   "name": "Headline alerts under tabs",
+   "lead": "Headline alerts under tabs",
+   "n": 5,
+   "expect": []
+  },
+  "v4": {
+   "name": "Empty",
+   "lead": "Empty",
+   "n": 17,
+   "expect": [
+    "A title that names the screen",
+    "A back or close control at the top on most",
+    "No times, avatars, unread marks or buttons, because there are no items"
+   ]
+  }
+ },
+ "key_text": [
+  1,
+  3,
+  7,
+  8
+ ],
+ "not_checked": [
+  "What happens after a tap on a row or its button: one screenshot cannot show it.",
+  "Whether an unread mark clears once the item is seen: that needs a second state.",
+  "Whether the list is grouped, sorted or paged the way the person expects over time."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 59,
+   "says": "Item text and times are set small and in pale grey.",
+   "why": "Item text and times are set very small and in pale grey. Seen on 1 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 11,
+   "of": 59,
+   "says": "Several rows in a row read almost the same, so they cannot be told apart without reading each one.",
+   "why": "Several lines in a row are almost the same, so the person cannot tell them apart without reading each one. Seen on 11 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 59,
+   "says": "The screen holds one setting row and nothing else, so it does not say what will appear.",
+   "why": "The screen holds one setting row and nothing else, so it does not say what will appear. Seen on 1 of 59 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 53,
+   "of": 59,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No title that names the screen.",
+   "why": "53 of 59 checked screens have \"Title that names the screen\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 36,
+   "of": 59,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "No time on the items.",
+   "why": "36 of 59 checked screens have \"A time on each item\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 38,
+   "of": 59,
+   "low": 0.52,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "No avatar, icon or thumbnail at the left of the items.",
+   "why": "38 of 59 checked screens have \"Avatar, icon or thumbnail at the left of the item\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 53,
+   "of": 53,
+   "low": 0.93,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The title is not in the top third of the screen.",
+   "why": "Of the 53 screens that have \"Title that names the screen\", 53 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 34,
+   "of": 34,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back or close control is not in the top third.",
+   "why": "Of the 34 screens that have \"Back arrow or close X at the top\", 34 put it in the top third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "top",
+   "seen": 28,
+   "of": 36,
+   "low": 0.62,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The first time on the list sits below the top third.",
+   "why": "Of the 36 screens that have \"A time on each item\", 28 put it in the top third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "top",
+   "seen": 33,
+   "of": 38,
+   "low": 0.73,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "The first avatar or icon sits below the top third.",
+   "why": "Of the 38 screens that have \"Avatar, icon or thumbnail at the left of the item\", 33 put it in the top third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "bottom",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not at the bottom of the screen.",
+   "why": "Of the 32 screens that have \"Bottom tab bar\", 32 put it in the bottom third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "top",
+   "seen": 13,
+   "of": 15,
+   "low": 0.62,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The first unread dot or tint sits below the top third.",
+   "why": "Of the 15 screens that have \"Unread dot or tinted row\", 13 put it in the top third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "top",
+   "seen": 12,
+   "of": 12,
+   "low": 0.76,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The first time heading is not in the top third.",
+   "why": "Of the 12 screens that have \"Headings that group by time\", 12 put it in the top third."
+  },
+  {
+   "id": "position/9",
+   "kind": "convention",
+   "test": "position",
+   "part": 9,
+   "third": "top",
+   "seen": 16,
+   "of": 17,
+   "low": 0.73,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The filter tabs are not in the top third.",
+   "why": "Of the 17 screens that have \"Tabs that filter the list\", 16 put it in the top third."
+  },
+  {
+   "id": "position/10",
+   "kind": "convention",
+   "test": "position",
+   "part": 10,
+   "third": "top",
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The gear or channel setting is not in the header area at the top.",
+   "why": "Of the 15 screens that have \"Gear, Manage or channel setting in the header\", 15 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 53,
+   "of": 53,
+   "low": 0.93,
+   "says": "More than one title on the screen.",
+   "why": "Of the 53 screens that have \"Title that names the screen\", 53 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 34,
+   "of": 34,
+   "low": 0.9,
+   "says": "More than one back or close control.",
+   "why": "Of the 34 screens that have \"Back arrow or close X at the top\", 34 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "says": "More than one bottom tab bar.",
+   "why": "Of the 32 screens that have \"Bottom tab bar\", 32 show exactly one."
+  },
+  {
+   "id": "count/10",
+   "kind": "convention",
+   "test": "count",
+   "part": 10,
+   "severity": "hint",
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "says": "More than one gear or channel setting in the header.",
+   "why": "Of the 15 screens that have \"Gear, Manage or channel setting in the header\", 15 show exactly one."
+  },
+  {
+   "id": "v1/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 6,
+   "of": 26,
+   "low": 0.11,
+   "says": "Event rows screens are not checked for \"Tabs that filter the list\".",
+   "why": "Only 6 of 26 Event rows screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v1/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 5,
+   "of": 26,
+   "low": 0.09,
+   "says": "Event rows screens are not checked for \"Gear, Manage or channel setting in the header\".",
+   "why": "Only 5 of 26 Event rows screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 11,
+   "low": 0.05,
+   "says": "Answer button rows screens are not checked for \"Unread dot or tinted row\".",
+   "why": "Only 2 of 11 Answer button rows screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 7,
+   "seen": 11,
+   "of": 11,
+   "low": 0.74,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A screen of rows with an answer button has no button or action row on the items.",
+   "why": "11 of 11 Answer button rows screens have \"Button or action row on the item\"."
+  },
+  {
+   "id": "v2/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 11,
+   "low": 0.1,
+   "says": "Answer button rows screens are not checked for \"Headings that group by time\".",
+   "why": "Only 3 of 11 Answer button rows screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 11,
+   "low": 0.1,
+   "says": "Answer button rows screens are not checked for \"Tabs that filter the list\".",
+   "why": "Only 3 of 11 Answer button rows screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 11,
+   "low": 0.05,
+   "says": "Answer button rows screens are not checked for \"Gear, Manage or channel setting in the header\".",
+   "why": "Only 2 of 11 Answer button rows screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/3",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 3,
+   "exempts": [
+    "presence/3",
+    "position/3"
+   ],
+   "severity": null,
+   "seen": 0,
+   "of": 17,
+   "low": 0.0,
+   "says": "Empty screens are not checked for \"A time on each item\".",
+   "why": "Only 0 of 17 Empty screens have it, so presence/3 and position/3 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 4,
+   "exempts": [
+    "presence/4",
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 0,
+   "of": 17,
+   "low": 0.0,
+   "says": "Empty screens are not checked for \"Avatar, icon or thumbnail at the left of the item\".",
+   "why": "Only 0 of 17 Empty screens have it, so presence/4 and position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 0,
+   "of": 17,
+   "low": 0.0,
+   "says": "Empty screens are not checked for \"Unread dot or tinted row\".",
+   "why": "Only 0 of 17 Empty screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 17,
+   "low": 0.01,
+   "says": "Empty screens are not checked for \"Headings that group by time\".",
+   "why": "Only 1 of 17 Empty screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 17,
+   "low": 0.06,
+   "says": "Empty screens are not checked for \"Tabs that filter the list\".",
+   "why": "Only 3 of 17 Empty screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

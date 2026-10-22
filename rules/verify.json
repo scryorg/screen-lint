@@ -1,0 +1,490 @@
+{
+ "type": "verify",
+ "name": "Verify",
+ "n_read": 64,
+ "n_type": 53,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Title that says what to do",
+   "key_text": true
+  },
+  "2": {
+   "name": "Back, close or cancel at the top",
+   "key_text": false
+  },
+  "3": {
+   "name": "Says where the code or link was sent",
+   "key_text": true
+  },
+  "4": {
+   "name": "Code entry",
+   "key_text": true
+  },
+  "5": {
+   "name": "Button to send the code or move on",
+   "key_text": true
+  },
+  "6": {
+   "name": "Resend control",
+   "key_text": true
+  },
+  "7": {
+   "name": "Way out if nothing arrives",
+   "key_text": true
+  },
+  "8": {
+   "name": "Countdown or expiry time stated",
+   "key_text": true
+  },
+  "9": {
+   "name": "Number keypad open",
+   "key_text": false
+  },
+  "10": {
+   "name": "Illustration or photo",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Separate code boxes",
+   "lead": "Code in separate boxes",
+   "n": 23,
+   "expect": [
+    "A title that says what to do, near the top",
+    "One box or slot per digit, with no submit button",
+    "A back or close control at the top",
+    "The number keypad open under the form"
+   ]
+  },
+  "v2": {
+   "name": "One field, one button",
+   "lead": "Code in one field with a button",
+   "n": 22,
+   "expect": [
+    "A title that says what to do, near the top",
+    "A line saying where the code was sent",
+    "A single code field with a button to send it",
+    "A back or close control at the top"
+   ]
+  },
+  "v3": {
+   "name": "Check your email",
+   "lead": "Check your email",
+   "n": 4,
+   "expect": []
+  },
+  "v4": {
+   "name": "Identity check without a sent code",
+   "lead": "Identity check without a sent code",
+   "n": 3,
+   "expect": []
+  }
+ },
+ "key_text": [
+  1,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8
+ ],
+ "not_checked": [
+  "What happens after the last digit or the tap on the button: whether the code sends itself, and what a wrong code shows.",
+  "The countdown on the resend control: one screenshot holds a single moment of it."
+ ],
+ "candidates": [
+  {
+   "name": "Single code field, no button",
+   "count": 2
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 53,
+   "says": "A system dialog about saving the password sits on top of the code form.",
+   "why": "An iOS save-password dialog sits on top of the code form. Seen on 1 of 53 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 2,
+   "of": 53,
+   "says": "A marketing consent box and a block of fine print sit between the code field and the button.",
+   "why": "A marketing consent box and a block of fine print sit between the code field and the Continue button. Seen on 2 of 53 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "low_label",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 4,
+   "of": 53,
+   "says": "The label on the main button is faint against its fill.",
+   "why": "The main button is pale or grey and nothing says what is missing. Seen on 4 of 53 checked screens."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 46,
+   "of": 53,
+   "low": 0.75,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No place to enter the code.",
+   "why": "46 of 53 checked screens have \"Code entry\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 46,
+   "of": 53,
+   "low": 0.75,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back, close or cancel control at the top.",
+   "why": "46 of 53 checked screens have \"Back, close or cancel at the top\"."
+  },
+  {
+   "id": "presence/9",
+   "kind": "convention",
+   "test": "presence",
+   "part": 9,
+   "seen": 33,
+   "of": 53,
+   "low": 0.49,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The number keypad is not open.",
+   "why": "33 of 53 checked screens have \"Number keypad open\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 43,
+   "of": 53,
+   "low": 0.69,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "Nothing says where the code or link was sent.",
+   "why": "43 of 53 checked screens have \"Says where the code or link was sent\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 52,
+   "of": 53,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No title that says what to do.",
+   "why": "52 of 53 checked screens have \"Title that says what to do\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 47,
+   "of": 52,
+   "low": 0.79,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The title sits below the top third.",
+   "why": "Of the 52 screens that have \"Title that says what to do\", 47 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 44,
+   "of": 46,
+   "low": 0.85,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back, close or cancel control sits outside the top third.",
+   "why": "Of the 46 screens that have \"Back, close or cancel at the top\", 44 put it in the top third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "top",
+   "seen": 33,
+   "of": 43,
+   "low": 0.62,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The line saying where the code was sent sits below the top third.",
+   "why": "Of the 43 screens that have \"Says where the code or link was sent\", 33 put it in the top third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "mid",
+   "seen": 22,
+   "of": 31,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The resend control sits outside the middle third.",
+   "why": "Of the 31 screens that have \"Resend control\", 22 put it in the mid third."
+  },
+  {
+   "id": "position/9",
+   "kind": "convention",
+   "test": "position",
+   "part": 9,
+   "third": "bottom",
+   "seen": 33,
+   "of": 33,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The number keypad sits outside the bottom third.",
+   "why": "Of the 33 screens that have \"Number keypad open\", 33 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 51,
+   "of": 52,
+   "low": 0.9,
+   "says": "More than one title.",
+   "why": "Of the 52 screens that have \"Title that says what to do\", 51 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 46,
+   "of": 46,
+   "low": 0.92,
+   "says": "More than one back, close or cancel control.",
+   "why": "Of the 46 screens that have \"Back, close or cancel at the top\", 46 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 43,
+   "of": 43,
+   "low": 0.92,
+   "says": "The line saying where the code was sent shows more than once.",
+   "why": "Of the 43 screens that have \"Says where the code or link was sent\", 43 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 38,
+   "of": 46,
+   "low": 0.69,
+   "says": "The code entry is split into several separate pieces.",
+   "why": "Of the 46 screens that have \"Code entry\", 38 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 27,
+   "of": 28,
+   "low": 0.82,
+   "says": "More than one button to send the code or move on.",
+   "why": "Of the 28 screens that have \"Button to send the code or move on\", 27 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 31,
+   "of": 31,
+   "low": 0.89,
+   "says": "More than one resend control.",
+   "why": "Of the 31 screens that have \"Resend control\", 31 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 20,
+   "of": 24,
+   "low": 0.64,
+   "says": "More than one way out if nothing arrives.",
+   "why": "Of the 24 screens that have \"Way out if nothing arrives\", 20 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "says": "The countdown or expiry time is stated more than once.",
+   "why": "Of the 15 screens that have \"Countdown or expiry time stated\", 15 show exactly one."
+  },
+  {
+   "id": "count/9",
+   "kind": "convention",
+   "test": "count",
+   "part": 9,
+   "severity": "hint",
+   "seen": 33,
+   "of": 33,
+   "low": 0.9,
+   "says": "More than one number keypad.",
+   "why": "Of the 33 screens that have \"Number keypad open\", 33 show exactly one."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 20,
+   "of": 22,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No button to send the code on a one-field screen.",
+   "why": "20 of 22 One field, one button screens have \"Button to send the code or move on\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

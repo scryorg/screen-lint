@@ -1,0 +1,613 @@
+{
+ "type": "welcome",
+ "name": "Welcome",
+ "n_read": 64,
+ "n_type": 57,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Headline-size message",
+   "key_text": true
+  },
+  "2": {
+   "name": "Picture, illustration or product shot",
+   "key_text": false
+  },
+  "3": {
+   "name": "Button in the bottom third",
+   "key_text": true
+  },
+  "4": {
+   "name": "Body text under the headline",
+   "key_text": true
+  },
+  "5": {
+   "name": "Second choice under the button",
+   "key_text": true
+  },
+  "6": {
+   "name": "Dark background",
+   "key_text": false
+  },
+  "7": {
+   "name": "Brand logo or name",
+   "key_text": false
+  },
+  "8": {
+   "name": "Page dots or progress bars",
+   "key_text": false
+  },
+  "9": {
+   "name": "Account entry (log in or sign-in buttons)",
+   "key_text": true
+  },
+  "10": {
+   "name": "Close, back or skip at the top",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Carousel page",
+   "lead": "Carousel page",
+   "n": 21,
+   "expect": [
+    "One headline-size message with a picture or drawing",
+    "Page dots or progress bars that show where this page sits",
+    "One button in the bottom third",
+    "Body text under the headline on most pages"
+   ]
+  },
+  "v2": {
+   "name": "Value line with account choice",
+   "lead": "Value line with account choice",
+   "n": 12,
+   "expect": [
+    "A headline-size message with a picture or drawing",
+    "Log in or sign-in buttons in the bottom third",
+    "A second choice, such as a log in link, under the main button"
+   ]
+  },
+  "v3": {
+   "name": "Card or sheet",
+   "lead": "Card or sheet over the app",
+   "n": 11,
+   "expect": [
+    "A headline-size message with a picture or drawing",
+    "One button in the bottom third",
+    "No log in or sign-in buttons on the card"
+   ]
+  },
+  "v4": {
+   "name": "Message only, no button",
+   "lead": "Message only, no button",
+   "n": 7,
+   "expect": []
+  }
+ },
+ "key_text": [
+  1,
+  3,
+  4,
+  5,
+  9
+ ],
+ "not_checked": [
+  "The other pages of a carousel and what a swipe or a tap on the dots does: one screenshot shows a single page.",
+  "Whether a screen with no visible button still moves on by a swipe or a tap anywhere; the rule asks for a control you can see.",
+  "Whether a second choice, such as log in or skip, leads where its words say."
+ ],
+ "candidates": [
+  {
+   "name": "Feature intro",
+   "count": 8
+  },
+  {
+   "name": "Single message, one button",
+   "count": 5
+  },
+  {
+   "name": "Benefit list",
+   "count": 3
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "part_missing:3",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 7,
+   "of": 57,
+   "says": "No button in the bottom third to move on: the screen shows a message and a picture only.",
+   "why": "No visible control to move on. The screen shows a message and a picture only. Seen on 7 of 57 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 9,
+   "of": 57,
+   "says": "Small body text is faint against its background: grey on white, or white on a mid-tone color.",
+   "why": "Small body text with low contrast: grey on white, or white on a mid-tone color. Seen on 9 of 57 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 6,
+   "of": 57,
+   "says": "Words run across or behind artwork, so part of the headline or body text is hard to read.",
+   "why": "Words run across or behind artwork: a chart line crosses the headline on Rise, and a sheet covers part of the headline on Shipt. Seen on 6 of 57 checked screens."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 50,
+   "of": 57,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No button in the bottom third.",
+   "why": "50 of 57 checked screens have \"Button in the bottom third\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 36,
+   "of": 57,
+   "low": 0.5,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No body text under the headline.",
+   "why": "36 of 57 checked screens have \"Body text under the headline\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 56,
+   "of": 57,
+   "low": 0.91,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No headline-size message on the screen.",
+   "why": "56 of 57 checked screens have \"Headline-size message\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 54,
+   "of": 57,
+   "low": 0.86,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No picture, illustration or product shot.",
+   "why": "54 of 57 checked screens have \"Picture, illustration or product shot\"."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "mid",
+   "seen": 38,
+   "of": 54,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The picture sits at the top or the bottom of the screen, not in the middle.",
+   "why": "Of the 54 screens that have \"Picture, illustration or product shot\", 38 put it in the mid third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "bottom",
+   "seen": 48,
+   "of": 50,
+   "low": 0.87,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The button sits above the bottom third.",
+   "why": "Of the 50 screens that have \"Button in the bottom third\", 48 put it in the bottom third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "bottom",
+   "seen": 17,
+   "of": 17,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The second choice sits above the bottom third.",
+   "why": "Of the 17 screens that have \"Second choice under the button\", 17 put it in the bottom third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "bottom",
+   "seen": 14,
+   "of": 20,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The page dots or bars sit outside the bottom third.",
+   "why": "Of the 20 screens that have \"Page dots or progress bars\", 14 put it in the bottom third."
+  },
+  {
+   "id": "position/9",
+   "kind": "convention",
+   "test": "position",
+   "part": 9,
+   "third": "bottom",
+   "seen": 11,
+   "of": 13,
+   "low": 0.58,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The log in or sign-in buttons sit above the bottom third.",
+   "why": "Of the 13 screens that have \"Account entry (log in or sign-in buttons)\", 11 put it in the bottom third."
+  },
+  {
+   "id": "position/10",
+   "kind": "convention",
+   "test": "position",
+   "part": 10,
+   "third": "top",
+   "seen": 16,
+   "of": 16,
+   "low": 0.81,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The close, back or skip control is not at the top.",
+   "why": "Of the 16 screens that have \"Close, back or skip at the top\", 16 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 52,
+   "of": 56,
+   "low": 0.83,
+   "says": "More than one headline-size message.",
+   "why": "Of the 56 screens that have \"Headline-size message\", 52 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 47,
+   "of": 54,
+   "low": 0.76,
+   "says": "More than one picture competes on the screen.",
+   "why": "Of the 54 screens that have \"Picture, illustration or product shot\", 47 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 47,
+   "of": 50,
+   "low": 0.84,
+   "says": "More than one button in the bottom third.",
+   "why": "Of the 50 screens that have \"Button in the bottom third\", 47 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 32,
+   "of": 36,
+   "low": 0.75,
+   "says": "More than one block of body text under the headline.",
+   "why": "Of the 36 screens that have \"Body text under the headline\", 32 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 16,
+   "of": 17,
+   "low": 0.73,
+   "says": "More than one second choice under the button.",
+   "why": "Of the 17 screens that have \"Second choice under the button\", 16 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 18,
+   "of": 19,
+   "low": 0.75,
+   "says": "The brand logo or name shows more than once.",
+   "why": "Of the 19 screens that have \"Brand logo or name\", 18 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 20,
+   "of": 20,
+   "low": 0.84,
+   "says": "More than one set of page dots or progress bars.",
+   "why": "Of the 20 screens that have \"Page dots or progress bars\", 20 show exactly one."
+  },
+  {
+   "id": "count/10",
+   "kind": "convention",
+   "test": "count",
+   "part": 10,
+   "severity": "hint",
+   "seen": 16,
+   "of": 16,
+   "low": 0.81,
+   "says": "More than one close, back or skip control at the top.",
+   "why": "Of the 16 screens that have \"Close, back or skip at the top\", 16 show exactly one."
+  },
+  {
+   "id": "v1/presence/8",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 8,
+   "seen": 20,
+   "of": 21,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A carousel page with no page dots or progress bars to show where it sits.",
+   "why": "20 of 21 Carousel page screens have \"Page dots or progress bars\"."
+  },
+  {
+   "id": "v1/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 5,
+   "of": 21,
+   "low": 0.11,
+   "says": "Carousel page screens are not checked for \"Account entry (log in or sign-in buttons)\".",
+   "why": "Only 5 of 21 Carousel page screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v1/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 6,
+   "of": 21,
+   "low": 0.14,
+   "says": "Carousel page screens are not checked for \"Close, back or skip at the top\".",
+   "why": "Only 6 of 21 Carousel page screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 11,
+   "of": 12,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No second choice, such as a log in link, under the button.",
+   "why": "11 of 12 Value line with account choice screens have \"Second choice under the button\"."
+  },
+  {
+   "id": "v2/presence/9",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 9,
+   "seen": 12,
+   "of": 12,
+   "low": 0.76,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No log in or sign-in buttons on a screen that offers an account choice.",
+   "why": "12 of 12 Value line with account choice screens have \"Account entry (log in or sign-in buttons)\"."
+  },
+  {
+   "id": "v2/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 12,
+   "low": 0.01,
+   "says": "Value line with account choice screens are not checked for \"Close, back or skip at the top\".",
+   "why": "Only 1 of 12 Value line with account choice screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/5",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 5,
+   "exempts": [
+    "position/5"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 11,
+   "low": 0.1,
+   "says": "Card or sheet screens are not checked for \"Second choice under the button\".",
+   "why": "Only 3 of 11 Card or sheet screens have it, so position/5 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/9",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 9,
+   "exempts": [
+    "position/9"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 11,
+   "low": 0.02,
+   "says": "Card or sheet screens are not checked for \"Account entry (log in or sign-in buttons)\".",
+   "why": "Only 1 of 11 Card or sheet screens have it, so position/9 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 11,
+   "low": 0.05,
+   "says": "Card or sheet screens are not checked for \"Close, back or skip at the top\".",
+   "why": "Only 2 of 11 Card or sheet screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

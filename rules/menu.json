@@ -1,0 +1,562 @@
+{
+ "type": "menu",
+ "name": "Menu",
+ "n_read": 64,
+ "n_type": 59,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "List of labelled rows or buttons",
+   "key_text": true
+  },
+  "2": {
+   "name": "Back arrow, close X, Done or Cancel",
+   "key_text": false
+  },
+  "3": {
+   "name": "Small icon at the left of each row",
+   "key_text": false
+  },
+  "4": {
+   "name": "Shown over another screen: sheet, popover, slide-in panel or overlay",
+   "key_text": false
+  },
+  "5": {
+   "name": "Chevron at the right edge of rows",
+   "key_text": false
+  },
+  "6": {
+   "name": "Help or support row",
+   "key_text": true
+  },
+  "7": {
+   "name": "Group headings",
+   "key_text": true
+  },
+  "8": {
+   "name": "Bottom tab bar still visible",
+   "key_text": false
+  },
+  "9": {
+   "name": "Account or settings row",
+   "key_text": true
+  },
+  "10": {
+   "name": "Identity header: avatar, name or email",
+   "key_text": true
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Profile or account menu",
+   "lead": "Profile or account menu",
+   "n": 13,
+   "expect": [
+    "The rows start in the top third of the screen",
+    "A small icon at the left of the rows",
+    "An account or settings row",
+    "A help or support row"
+   ]
+  },
+  "v2": {
+   "name": "Slide-in navigation",
+   "lead": "Slide-in or overlay navigation",
+   "n": 10,
+   "expect": [
+    "A panel drawn over another screen, with the page still showing behind it",
+    "The list of rows starts in the top third",
+    "A small icon at the left of most rows"
+   ]
+  },
+  "v3": {
+   "name": "Section list",
+   "lead": "Section list",
+   "n": 25,
+   "expect": [
+    "The list of rows starts in the top third of the screen",
+    "A back arrow, close X, Done or Cancel at the top",
+    "A chevron at the right edge of the rows",
+    "The list fills the page and is not drawn over another screen"
+   ]
+  },
+  "v4": {
+   "name": "Action or switch sheet",
+   "lead": "Action or switch sheet",
+   "n": 14,
+   "expect": [
+    "A sheet drawn over another screen",
+    "A back arrow, close X, Done or Cancel",
+    "No group headings: the choices run as one list"
+   ]
+  }
+ },
+ "key_text": [
+  1,
+  6,
+  7,
+  9,
+  10
+ ],
+ "not_checked": [
+  "What happens after a tap: which page, sheet or prompt a row opens, and whether log out comes last or asks to confirm.",
+  "How a panel closes, by a tap on the page behind it or a swipe, and the motion of it sliding in."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 2,
+   "of": 59,
+   "says": "The panel is see-through, so the page behind it stays busy beside and below the rows.",
+   "why": "The panel is dark and see-through, so scores and team crests stay busy beside and below the rows. Seen on 2 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 5,
+   "of": 59,
+   "says": "Banners and cards sit above the list and push the first row about halfway down the page.",
+   "why": "A banner, rating tiles, an invite box and a promo box sit above the list, so the first row starts about halfway down the page. Seen on 5 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 7,
+   "of": 59,
+   "says": "The page holds only two rows in one box and the rest of it is empty.",
+   "why": "A full page holds two rows in one box, and the rest of the page is empty. Seen on 7 of 59 checked screens."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 36,
+   "of": 59,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The rows have no small icon at the left.",
+   "why": "36 of 59 checked screens have \"Small icon at the left of each row\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 59,
+   "of": 59,
+   "low": 0.94,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No list of labelled rows or buttons.",
+   "why": "59 of 59 checked screens have \"List of labelled rows or buttons\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 46,
+   "of": 59,
+   "low": 0.66,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The list of rows starts below the top third of the screen.",
+   "why": "Of the 59 screens that have \"List of labelled rows or buttons\", 46 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 29,
+   "of": 35,
+   "low": 0.67,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back, close, Done or Cancel control is not in the top third.",
+   "why": "Of the 35 screens that have \"Back arrow, close X, Done or Cancel\", 29 put it in the top third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "top",
+   "seen": 29,
+   "of": 36,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The row icons start below the top third of the screen.",
+   "why": "Of the 36 screens that have \"Small icon at the left of each row\", 29 put it in the top third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "top",
+   "seen": 20,
+   "of": 27,
+   "low": 0.55,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The chevrons at the right edge of the rows start below the top third.",
+   "why": "Of the 27 screens that have \"Chevron at the right edge of rows\", 20 put it in the top third."
+  },
+  {
+   "id": "position/7",
+   "kind": "convention",
+   "test": "position",
+   "part": 7,
+   "third": "top",
+   "seen": 17,
+   "of": 22,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The group headings start below the top third of the screen.",
+   "why": "Of the 22 screens that have \"Group headings\", 17 put it in the top third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "bottom",
+   "seen": 19,
+   "of": 19,
+   "low": 0.83,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not at the bottom of the screen.",
+   "why": "Of the 19 screens that have \"Bottom tab bar still visible\", 19 put it in the bottom third."
+  },
+  {
+   "id": "position/10",
+   "kind": "convention",
+   "test": "position",
+   "part": 10,
+   "third": "top",
+   "seen": 10,
+   "of": 13,
+   "low": 0.5,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The avatar and name header is not in the top third.",
+   "why": "Of the 13 screens that have \"Identity header: avatar, name or email\", 10 put it in the top third. Held at a hint: a second reader agrees on whether it is there on only 100% of the screens read twice."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 33,
+   "of": 35,
+   "low": 0.81,
+   "says": "More than one back, close, Done or Cancel control.",
+   "why": "Of the 35 screens that have \"Back arrow, close X, Done or Cancel\", 33 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 19,
+   "of": 19,
+   "low": 0.83,
+   "says": "More than one bottom tab bar.",
+   "why": "Of the 19 screens that have \"Bottom tab bar still visible\", 19 show exactly one."
+  },
+  {
+   "id": "count/10",
+   "kind": "convention",
+   "test": "count",
+   "part": 10,
+   "severity": "hint",
+   "seen": 13,
+   "of": 13,
+   "low": 0.77,
+   "says": "More than one avatar and name header.",
+   "why": "Of the 13 screens that have \"Identity header: avatar, name or email\", 13 show exactly one."
+  },
+  {
+   "id": "v1/presence/9",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 9,
+   "seen": 11,
+   "of": 13,
+   "low": 0.58,
+   "severity": "warn",
+   "agreement": 0.88,
+   "says": "A profile menu with no account or settings row.",
+   "why": "11 of 13 Profile or account menu screens have \"Account or settings row\"."
+  },
+  {
+   "id": "v2/exempt/2",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 2,
+   "exempts": [
+    "position/2"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Slide-in navigation screens are not checked for \"Back arrow, close X, Done or Cancel\".",
+   "why": "Only 2 of 10 Slide-in navigation screens have it, so position/2 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 4,
+   "seen": 10,
+   "of": 10,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The navigation menu is not drawn over another screen.",
+   "why": "10 of 10 Slide-in navigation screens have \"Shown over another screen: sheet, popover, slide-in panel or overlay\"."
+  },
+  {
+   "id": "v2/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Slide-in navigation screens are not checked for \"Group headings\".",
+   "why": "Only 2 of 10 Slide-in navigation screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 25,
+   "low": 0.04,
+   "says": "Section list screens are not checked for \"Identity header: avatar, name or email\".",
+   "why": "Only 3 of 25 Section list screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/presence/2",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 2,
+   "seen": 12,
+   "of": 14,
+   "low": 0.6,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The sheet has no back, close, Done or Cancel control.",
+   "why": "12 of 14 Action or switch sheet screens have \"Back arrow, close X, Done or Cancel\"."
+  },
+  {
+   "id": "v4/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 4,
+   "seen": 13,
+   "of": 14,
+   "low": 0.69,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The sheet is not drawn over another screen.",
+   "why": "13 of 14 Action or switch sheet screens have \"Shown over another screen: sheet, popover, slide-in panel or overlay\"."
+  },
+  {
+   "id": "v4/exempt/5",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 5,
+   "exempts": [
+    "position/5"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 14,
+   "low": 0.04,
+   "says": "Action or switch sheet screens are not checked for \"Chevron at the right edge of rows\".",
+   "why": "Only 2 of 14 Action or switch sheet screens have it, so position/5 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 0,
+   "of": 14,
+   "low": 0.0,
+   "says": "Action or switch sheet screens are not checked for \"Group headings\".",
+   "why": "Only 0 of 14 Action or switch sheet screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 14,
+   "low": 0.01,
+   "says": "Action or switch sheet screens are not checked for \"Bottom tab bar still visible\".",
+   "why": "Only 1 of 14 Action or switch sheet screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/10",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 10,
+   "exempts": [
+    "position/10"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 14,
+   "low": 0.08,
+   "says": "Action or switch sheet screens are not checked for \"Identity header: avatar, name or email\".",
+   "why": "Only 3 of 14 Action or switch sheet screens have it, so position/10 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

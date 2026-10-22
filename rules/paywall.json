@@ -1,0 +1,381 @@
+{
+ "type": "paywall",
+ "name": "Paywall",
+ "n_read": 64,
+ "n_type": 46,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Way out: close X, back arrow, Not Now or No Thanks",
+   "key_text": false
+  },
+  "2": {
+   "name": "One filled main button",
+   "key_text": true
+  },
+  "3": {
+   "name": "Price in currency",
+   "key_text": true
+  },
+  "4": {
+   "name": "Large illustration, art or 3D object",
+   "key_text": false
+  },
+  "5": {
+   "name": "Fine print on renewal, cancelling or refunds",
+   "key_text": true
+  },
+  "6": {
+   "name": "Plan choice with two or more priced options",
+   "key_text": false
+  },
+  "7": {
+   "name": "Free-trial wording",
+   "key_text": true
+  },
+  "8": {
+   "name": "Benefit list",
+   "key_text": false
+  },
+  "9": {
+   "name": "Restore purchase link",
+   "key_text": false
+  },
+  "10": {
+   "name": "App Store purchase sheet on top",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Plan picker",
+   "lead": "Plan picker",
+   "n": 15,
+   "expect": [
+    "Two or more plans side by side, each with its price",
+    "A way out at the top: a close X, a back arrow or Not Now",
+    "One filled button low on the screen that confirms the chosen plan"
+   ]
+  },
+  "v2": {
+   "name": "Benefit list, one button",
+   "lead": "Benefit list and one button",
+   "n": 20,
+   "expect": [
+    "A list of benefits in the top or middle of the screen",
+    "One filled button at the bottom",
+    "A way out at the top",
+    "A price on most of them"
+   ]
+  },
+  "v3": {
+   "name": "Hero art, little text",
+   "lead": "Hero art, little text",
+   "n": 15,
+   "expect": [
+    "A large picture, illustration or art object in the top or middle of the screen",
+    "A filled button at the bottom on most",
+    "A way out at the top on most",
+    "No benefit list: a line or two of copy instead"
+   ]
+  },
+  "v4": {
+   "name": "System purchase sheet",
+   "lead": "System purchase sheet",
+   "n": 7,
+   "expect": [
+    "The system purchase sheet at the bottom, over the offer page",
+    "A price on the screen",
+    "Fine print on renewal or cancelling on most",
+    "No filled main button on the page: the sheet takes its place"
+   ]
+  }
+ },
+ "key_text": [
+  2,
+  3,
+  5,
+  7
+ ],
+ "not_checked": [
+  "What happens after the tap: the system purchase sheet, the start of the trial and the success or error alert are other states that one screenshot cannot show.",
+  "Whether picking a plan changes the price and the button label: one screenshot shows one plan selected.",
+  "Whether a page that scrolls hides plans or fine print below the edge, and whether a savings badge tells the truth.",
+  "Text on the offer page behind a purchase sheet is dimmed by the sheet, so its contrast can read low; the check cannot always tell dimming from a faint design."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "part_missing:3",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 10,
+   "of": 46,
+   "says": "No price in currency on the offer screen, so the cost is only found after the tap.",
+   "why": "No price on the offer screen, so the cost is only found after the button is tapped. Seen on 10 of 46 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "faint_control",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 4,
+   "of": 46,
+   "says": "The close or back control is faint against what is behind it.",
+   "why": "The close control is a faint X or link over art or a pale page, under the 3:1 a control needs, and easy to miss. Seen on 4 of 46 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "part_area_over:5:25",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 46,
+   "says": "A big block of small legal text takes over the screen and crowds out the offer.",
+   "why": "A full-screen block of small legal text sits next to the offer and pushes the plan details to the top. Seen on 1 of 46 checked screens."
+  },
+  {
+   "id": "pitfall/4",
+   "kind": "pitfall",
+   "test": "low_label",
+   "pitfall": "4",
+   "severity": "error",
+   "seen": 3,
+   "of": 46,
+   "says": "The label on the main button is faint against its fill.",
+   "why": "The main button's label or the price is too pale to read against what is behind it, under 3:1. Seen on 3 of 46 checked screens."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 36,
+   "of": 46,
+   "low": 0.64,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No filled main button to pay or start the trial.",
+   "why": "36 of 46 checked screens have \"One filled main button\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 41,
+   "of": 46,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No way out: no close, back, Not Now or No Thanks control.",
+   "why": "41 of 46 checked screens have \"Way out: close X, back arrow, Not Now or No Thanks\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 33,
+   "of": 46,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No price in currency on the screen.",
+   "why": "33 of 46 checked screens have \"Price in currency\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 36,
+   "of": 41,
+   "low": 0.74,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The way out is not in the top third of the screen.",
+   "why": "Of the 41 screens that have \"Way out: close X, back arrow, Not Now or No Thanks\", 36 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 32,
+   "of": 36,
+   "low": 0.75,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The main button is not in the bottom third of the screen.",
+   "why": "Of the 36 screens that have \"One filled main button\", 32 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 33,
+   "of": 41,
+   "low": 0.66,
+   "says": "More than one way out competes on the screen, such as a close X and a Not Now link.",
+   "why": "Of the 41 screens that have \"Way out: close X, back arrow, Not Now or No Thanks\", 33 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 36,
+   "of": 36,
+   "low": 0.9,
+   "says": "More than one filled main button.",
+   "why": "Of the 36 screens that have \"One filled main button\", 36 show exactly one."
+  },
+  {
+   "id": "v1/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 6,
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A plan picker with no priced plan options.",
+   "why": "15 of 15 Plan picker screens have \"Plan choice with two or more priced options\"."
+  },
+  {
+   "id": "v2/presence/8",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 8,
+   "seen": 20,
+   "of": 20,
+   "low": 0.84,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "A benefit-list screen with no benefit list.",
+   "why": "20 of 20 Benefit list, one button screens have \"Benefit list\"."
+  },
+  {
+   "id": "v3/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v3",
+   "part": 4,
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A hero-art screen with no large picture, illustration or art object.",
+   "why": "15 of 15 Hero art, little text screens have \"Large illustration, art or 3D object\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

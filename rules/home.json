@@ -1,0 +1,400 @@
+{
+ "type": "home",
+ "name": "Home",
+ "n_read": 64,
+ "n_type": 54,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "2": {
+   "name": "Short heading above each block of content",
+   "key_text": true
+  },
+  "3": {
+   "name": "Large photo or illustration block",
+   "key_text": false
+  },
+  "4": {
+   "name": "Row that scrolls sideways, cut off at the right edge",
+   "key_text": false
+  },
+  "5": {
+   "name": "Icons for account, alerts or settings in the top bar",
+   "key_text": false
+  },
+  "6": {
+   "name": "Number, ring or status summary near the top",
+   "key_text": true
+  },
+  "7": {
+   "name": "'See all', 'View all' or chevron link on a heading",
+   "key_text": false
+  },
+  "8": {
+   "name": "Search field or search icon on the page itself",
+   "key_text": false
+  },
+  "9": {
+   "name": "Greeting or date line at the top",
+   "key_text": true
+  },
+  "10": {
+   "name": "Promo card with a close (x) button",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Status first",
+   "lead": "Status first",
+   "n": 12,
+   "expect": [
+    "A number, ring or status summary near the top, on every screen",
+    "Short headings above the blocks under it",
+    "A bottom tab bar"
+   ]
+  },
+  "v2": {
+   "name": "Shelves of content",
+   "lead": "Shelves of content",
+   "n": 23,
+   "expect": [
+    "A short heading above every shelf",
+    "A row that scrolls sideways and is cut off at the right edge",
+    "A large photo or illustration block on most screens",
+    "A bottom tab bar"
+   ]
+  },
+  "v3": {
+   "name": "Photo-led front page",
+   "lead": "Photo-led front page",
+   "n": 7,
+   "expect": []
+  },
+  "v4": {
+   "name": "Greeting plus cards",
+   "lead": "Greeting plus cards",
+   "n": 12,
+   "expect": [
+    "A greeting or date line at the top",
+    "Account or alert icons in the top bar",
+    "Short headings above the cards",
+    "A bottom tab bar"
+   ]
+  }
+ },
+ "key_text": [
+  2,
+  6,
+  9
+ ],
+ "not_checked": [
+  "What happens after a tap on a tab, a card or a link: one screen cannot show it.",
+  "Whether a sideways row really scrolls, and what sits past the right edge.",
+  "Whether the number or status near the top is live or up to date.",
+  "Anything below the fold: a long page is judged on the part that shows."
+ ],
+ "candidates": [
+  {
+   "name": "Floating pill tab bar",
+   "count": 2
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 13,
+   "of": 54,
+   "says": "Tab bar icons have no words under them, so the person has to guess what each one opens.",
+   "why": "Tab bar icons come with no words, so the person has to guess what each one opens: Lightyear has three icons and Pillow has six. Seen on 13 of 54 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 7,
+   "of": 54,
+   "says": "Inactive tabs are drawn very pale, close to the colour of the bar behind them.",
+   "why": "Inactive tabs are drawn very pale, close to the background colour. Seen on 7 of 54 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 54,
+   "says": "A short list sits at the top and then blank space runs down to the tab bar.",
+   "why": "ClickUp shows one dashboard row and then blank space down to the tab bar. Seen on 2 of 54 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 45,
+   "of": 54,
+   "low": 0.71,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No bottom tab bar.",
+   "why": "45 of 54 checked screens have \"Bottom tab bar\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 43,
+   "of": 54,
+   "low": 0.67,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No short heading above any block of content.",
+   "why": "43 of 54 checked screens have \"Short heading above each block of content\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 36,
+   "of": 54,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No large photo or illustration block.",
+   "why": "36 of 54 checked screens have \"Large photo or illustration block\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "bottom",
+   "seen": 45,
+   "of": 45,
+   "low": 0.92,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not along the bottom of the screen.",
+   "why": "Of the 45 screens that have \"Bottom tab bar\", 45 put it in the bottom third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "top",
+   "seen": 29,
+   "of": 29,
+   "low": 0.88,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The account, alert or settings icons are not in the top bar.",
+   "why": "Of the 29 screens that have \"Icons for account, alerts or settings in the top bar\", 29 put it in the top third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "top",
+   "seen": 17,
+   "of": 17,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The search field or icon is not at the top of the page.",
+   "why": "Of the 17 screens that have \"Search field or search icon on the page itself\", 17 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 45,
+   "of": 45,
+   "low": 0.92,
+   "says": "More than one tab bar on the screen.",
+   "why": "Of the 45 screens that have \"Bottom tab bar\", 45 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 17,
+   "of": 17,
+   "low": 0.82,
+   "says": "More than one search field or icon on the page.",
+   "why": "Of the 17 screens that have \"Search field or search icon on the page itself\", 17 show exactly one."
+  },
+  {
+   "id": "v1/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 6,
+   "seen": 12,
+   "of": 12,
+   "low": 0.76,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A status-first home with no number, ring or status summary near the top.",
+   "why": "12 of 12 Status first screens have \"Number, ring or status summary near the top\"."
+  },
+  {
+   "id": "v1/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 12,
+   "low": 0.01,
+   "says": "Status first screens are not checked for \"Search field or search icon on the page itself\".",
+   "why": "Only 1 of 12 Status first screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 4,
+   "seen": 20,
+   "of": 23,
+   "low": 0.68,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A shelves home with no row that scrolls sideways and is cut off at the right edge.",
+   "why": "20 of 23 Shelves of content screens have \"Row that scrolls sideways, cut off at the right edge\"."
+  },
+  {
+   "id": "v4/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 12,
+   "low": 0.09,
+   "says": "Greeting plus cards screens are not checked for \"Search field or search icon on the page itself\".",
+   "why": "Only 3 of 12 Greeting plus cards screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

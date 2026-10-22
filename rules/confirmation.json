@@ -1,0 +1,415 @@
+{
+ "type": "confirmation",
+ "name": "Confirmation",
+ "n_read": 64,
+ "n_type": 54,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Headline that says what happened",
+   "key_text": true
+  },
+  "2": {
+   "name": "One main button",
+   "key_text": true
+  },
+  "3": {
+   "name": "Close X or back arrow",
+   "key_text": false
+  },
+  "4": {
+   "name": "Line of text on what was done or what happens next",
+   "key_text": true
+  },
+  "5": {
+   "name": "Check mark icon",
+   "key_text": false
+  },
+  "6": {
+   "name": "Second action or what-next options",
+   "key_text": true
+  },
+  "7": {
+   "name": "Large picture, mascot or illustration",
+   "key_text": false
+  },
+  "8": {
+   "name": "Amount or order details in rows",
+   "key_text": true
+  },
+  "9": {
+   "name": "Thumbs or star rating",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "All set after setup",
+   "lead": "All set after setup",
+   "n": 24,
+   "expect": [
+    "A headline that says what is ready, in the top or middle of the screen",
+    "A check mark or a large picture as the sign of success",
+    "A line of text on what was done or what comes next",
+    "One main button, usually in the bottom third"
+   ]
+  },
+  "v2": {
+   "name": "Order receipt",
+   "lead": "Receipt",
+   "n": 8,
+   "expect": [
+    "Amount or order details in rows",
+    "A second action or what-next option",
+    "A line of text on what was done or what happens next"
+   ]
+  },
+  "v3": {
+   "name": "Alert or sheet",
+   "lead": "Alert or sheet",
+   "n": 11,
+   "expect": [
+    "A headline that says what happened",
+    "A line of text under it",
+    "One main button, in the middle or bottom of the screen",
+    "No close X: the button is the way out"
+   ]
+  },
+  "v4": {
+   "name": "Done, then next job",
+   "lead": "Done, then the next job",
+   "n": 12,
+   "expect": [
+    "A headline that says what is done",
+    "One main button, usually in the bottom third",
+    "A line of text on what was done or what comes next",
+    "A second option for the next job, usually near the bottom"
+   ]
+  }
+ },
+ "key_text": [
+  1,
+  2,
+  4,
+  6,
+  8
+ ],
+ "not_checked": [
+  "What happens after a tap on the main button or the second action: one screen cannot show it.",
+  "Whether the result is true to what the person just did: the step before this screen is not in the picture.",
+  "Whether a rating prompt follows an order, ride or receipt: one screen cannot show what came before it.",
+  "Motion and sound, such as a check that draws itself or confetti."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 54,
+   "says": "Only a check mark on a bare screen: no words say what happened and no button leaves it.",
+   "why": "Only a check mark on a plain screen, with no words and no button to leave. Seen on 1 of 54 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 0,
+   "of": 54,
+   "says": "The only control is a round arrow with no label, and the body text is small grey type on a dark screen.",
+   "why": "The only control is a round arrow with no label, and the body text is small grey type on black. Seen on 0 of 54 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 3,
+   "of": 54,
+   "says": "No button on the screen; the only way out is a small X in a corner.",
+   "why": "No button is visible; the only exit is a small X in a corner. Seen on 3 of 54 checked screens."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 44,
+   "of": 54,
+   "low": 0.69,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No line of text on what was done or what happens next.",
+   "why": "44 of 54 checked screens have \"Line of text on what was done or what happens next\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 41,
+   "of": 54,
+   "low": 0.63,
+   "severity": "warn",
+   "agreement": 0.75,
+   "says": "No main button to finish or move on.",
+   "why": "41 of 54 checked screens have \"One main button\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 50,
+   "of": 54,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No headline that says what happened.",
+   "why": "50 of 54 checked screens have \"Headline that says what happened\"."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 29,
+   "of": 41,
+   "low": 0.56,
+   "severity": "warn",
+   "agreement": 0.75,
+   "says": "The main button is not in the bottom third.",
+   "why": "Of the 41 screens that have \"One main button\", 29 put it in the bottom third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "top",
+   "seen": 26,
+   "of": 26,
+   "low": 0.87,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The close or back control is not in the top third.",
+   "why": "Of the 26 screens that have \"Close X or back arrow\", 26 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 49,
+   "of": 50,
+   "low": 0.9,
+   "says": "More than one headline saying what happened.",
+   "why": "Of the 50 screens that have \"Headline that says what happened\", 49 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 40,
+   "of": 41,
+   "low": 0.87,
+   "says": "More than one main button.",
+   "why": "Of the 41 screens that have \"One main button\", 40 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 25,
+   "of": 26,
+   "low": 0.81,
+   "says": "More than one close or back control.",
+   "why": "Of the 26 screens that have \"Close X or back arrow\", 25 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 39,
+   "of": 44,
+   "low": 0.76,
+   "says": "More than one line of text on what was done or what happens next.",
+   "why": "Of the 44 screens that have \"Line of text on what was done or what happens next\", 39 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 20,
+   "of": 22,
+   "low": 0.72,
+   "says": "More than one check mark.",
+   "why": "Of the 22 screens that have \"Check mark icon\", 20 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 24,
+   "of": 24,
+   "low": 0.86,
+   "says": "More than one large picture or mascot.",
+   "why": "Of the 24 screens that have \"Large picture, mascot or illustration\", 24 show exactly one."
+  },
+  {
+   "id": "v2/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 6,
+   "seen": 7,
+   "of": 8,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 0.75,
+   "says": "A receipt with no second action or what-next option.",
+   "why": "7 of 8 Order receipt screens have \"Second action or what-next options\"."
+  },
+  {
+   "id": "v2/presence/8",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 8,
+   "seen": 8,
+   "of": 8,
+   "low": 0.68,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A receipt with no amount or order details in rows.",
+   "why": "8 of 8 Order receipt screens have \"Amount or order details in rows\"."
+  },
+  {
+   "id": "v3/exempt/3",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 3,
+   "exempts": [
+    "position/3"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 11,
+   "low": 0.02,
+   "says": "Alert or sheet screens are not checked for \"Close X or back arrow\".",
+   "why": "Only 1 of 11 Alert or sheet screens have it, so position/3 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

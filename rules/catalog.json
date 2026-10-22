@@ -1,0 +1,524 @@
+{
+ "type": "catalog",
+ "name": "Catalog",
+ "n_read": 64,
+ "n_type": 58,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Photo or cover art leading each item",
+   "key_text": false
+  },
+  "2": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "3": {
+   "name": "Short section headings",
+   "key_text": true
+  },
+  "4": {
+   "name": "Tabs or chips to pick a category or view",
+   "key_text": true
+  },
+  "5": {
+   "name": "One-column list or stacked cards",
+   "key_text": false
+  },
+  "6": {
+   "name": "Filter, sort or refine control",
+   "key_text": true
+  },
+  "7": {
+   "name": "Search field or search icon",
+   "key_text": false
+  },
+  "8": {
+   "name": "Price or cost on the item",
+   "key_text": true
+  },
+  "9": {
+   "name": "Two-column grid",
+   "key_text": false
+  },
+  "10": {
+   "name": "Result count",
+   "key_text": true
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Product grid",
+   "lead": "Product grid",
+   "n": 16,
+   "expect": [
+    "A photo on every item, two to a row",
+    "A name and a price under most photos",
+    "A bottom tab bar under the grid on most screens"
+   ]
+  },
+  "v2": {
+   "name": "Rows with thumbnail",
+   "lead": "Rows with a thumbnail",
+   "n": 16,
+   "expect": [
+    "One item per row in a single column",
+    "The list starts in the top third of the screen",
+    "A small picture or logo leading the rows on most screens"
+   ]
+  },
+  "v3": {
+   "name": "Shelves",
+   "lead": "Shelves",
+   "n": 9,
+   "expect": [
+    "A short heading over the shelves",
+    "A cover or photo on every item",
+    "Several covers showing at once in a row"
+   ]
+  },
+  "v4": {
+   "name": "Big photo cards",
+   "lead": "Big photo cards",
+   "n": 14,
+   "expect": [
+    "A large photo on every card",
+    "Cards stacked in a single column",
+    "Tabs or chips in the top third on most screens"
+   ]
+  }
+ },
+ "key_text": [
+  3,
+  4,
+  6,
+  8,
+  10
+ ],
+ "not_checked": [
+  "What the filter, sort or refine control opens: one screen cannot show the sheet or menu.",
+  "What a tap on an item does: the detail screen is not on this screen.",
+  "Whether a shelf slides sideways past the edge, and whether the tab bar floats over content as the list scrolls."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 3,
+   "of": 58,
+   "says": "A floating tab bar sits over the next row of items and hides their text.",
+   "why": "The floating tab bar on TIDE sits over the next row of content. Seen on 3 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 1,
+   "of": 58,
+   "says": "The sort options are small, pale grey text over a faded grid, so they are hard to read.",
+   "why": "On Missguided the sort options are small light grey text over a faded grid, so they are hard to read. Seen on 1 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 58,
+   "says": "A small refine label sits on top of a product photo instead of in the filter row.",
+   "why": "On HBX a small 'Refine' label sits on top of a product photo. Seen on 1 of 58 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 49,
+   "of": 58,
+   "low": 0.73,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No photo or cover art leads the items.",
+   "why": "49 of 58 checked screens have \"Photo or cover art leading each item\"."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The bottom tab bar is not at the bottom of the screen.",
+   "why": "Of the 32 screens that have \"Bottom tab bar\", 32 put it in the bottom third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "top",
+   "seen": 21,
+   "of": 23,
+   "low": 0.73,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tabs or chips that pick a category or view are not in the top third.",
+   "why": "Of the 23 screens that have \"Tabs or chips to pick a category or view\", 21 put it in the top third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "top",
+   "seen": 15,
+   "of": 17,
+   "low": 0.66,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The filter, sort or refine control is not in the top third.",
+   "why": "Of the 17 screens that have \"Filter, sort or refine control\", 15 put it in the top third."
+  },
+  {
+   "id": "position/7",
+   "kind": "convention",
+   "test": "position",
+   "part": 7,
+   "third": "top",
+   "seen": 20,
+   "of": 21,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The search field or search icon is not in the top third.",
+   "why": "Of the 21 screens that have \"Search field or search icon\", 20 put it in the top third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "mid",
+   "seen": 15,
+   "of": 20,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The price on the items is not in the middle third.",
+   "why": "Of the 20 screens that have \"Price or cost on the item\", 15 put it in the mid third."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "says": "More than one bottom tab bar.",
+   "why": "Of the 32 screens that have \"Bottom tab bar\", 32 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 20,
+   "of": 21,
+   "low": 0.77,
+   "says": "More than one search field or search icon.",
+   "why": "Of the 21 screens that have \"Search field or search icon\", 20 show exactly one."
+  },
+  {
+   "id": "v1/presence/9",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 9,
+   "seen": 16,
+   "of": 16,
+   "low": 0.81,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A product grid with no two-column grid of items.",
+   "why": "16 of 16 Product grid screens have \"Two-column grid\"."
+  },
+  {
+   "id": "v2/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 16,
+   "low": 0.1,
+   "says": "Rows with thumbnail screens are not checked for \"Tabs or chips to pick a category or view\".",
+   "why": "Only 4 of 16 Rows with thumbnail screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 16,
+   "of": 16,
+   "low": 0.81,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A list of rows with no one-column list or stack of cards.",
+   "why": "16 of 16 Rows with thumbnail screens have \"One-column list or stacked cards\"."
+  },
+  {
+   "id": "v2/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 16,
+   "low": 0.1,
+   "says": "Rows with thumbnail screens are not checked for \"Filter, sort or refine control\".",
+   "why": "Only 4 of 16 Rows with thumbnail screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 16,
+   "low": 0.07,
+   "says": "Rows with thumbnail screens are not checked for \"Search field or search icon\".",
+   "why": "Only 3 of 16 Rows with thumbnail screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 16,
+   "low": 0.03,
+   "says": "Rows with thumbnail screens are not checked for \"Price or cost on the item\".",
+   "why": "Only 2 of 16 Rows with thumbnail screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v3",
+   "part": 3,
+   "seen": 9,
+   "of": 9,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "Shelves with no short heading over them.",
+   "why": "9 of 9 Shelves screens have \"Short section headings\"."
+  },
+  {
+   "id": "v3/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 9,
+   "low": 0.02,
+   "says": "Shelves screens are not checked for \"Filter, sort or refine control\".",
+   "why": "Only 1 of 9 Shelves screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 9,
+   "low": 0.06,
+   "says": "Shelves screens are not checked for \"Price or cost on the item\".",
+   "why": "Only 2 of 9 Shelves screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 5,
+   "seen": 14,
+   "of": 14,
+   "low": 0.78,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "Big photo cards that are not stacked in one column.",
+   "why": "14 of 14 Big photo cards screens have \"One-column list or stacked cards\"."
+  },
+  {
+   "id": "v4/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 14,
+   "low": 0.12,
+   "says": "Big photo cards screens are not checked for \"Filter, sort or refine control\".",
+   "why": "Only 4 of 14 Big photo cards screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 14,
+   "low": 0.12,
+   "says": "Big photo cards screens are not checked for \"Search field or search icon\".",
+   "why": "Only 4 of 14 Big photo cards screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

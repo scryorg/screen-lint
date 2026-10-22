@@ -1,0 +1,382 @@
+{
+ "type": "help",
+ "name": "Help",
+ "n_read": 64,
+ "n_type": 59,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Back arrow, X or Done at the top",
+   "key_text": false
+  },
+  "2": {
+   "name": "A way to reach a person",
+   "key_text": true
+  },
+  "3": {
+   "name": "List of tappable rows to topics or pages",
+   "key_text": true
+  },
+  "4": {
+   "name": "Large headline that names the topic or asks how to help",
+   "key_text": true
+  },
+  "5": {
+   "name": "Question wording or an FAQ row",
+   "key_text": true
+  },
+  "6": {
+   "name": "Legal text or legal links",
+   "key_text": true
+  },
+  "7": {
+   "name": "Paragraphs of plain reading text",
+   "key_text": true
+  },
+  "8": {
+   "name": "Shown as a sheet or panel over the app",
+   "key_text": false
+  },
+  "9": {
+   "name": "Version number",
+   "key_text": false
+  },
+  "10": {
+   "name": "Numbered steps",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Help start page",
+   "lead": "Help start page",
+   "n": 16,
+   "expect": [
+    "A back arrow, X or Done at the top",
+    "A large headline that names the topic or asks how to help",
+    "A list of tappable rows to topics",
+    "Question wording or FAQ rows"
+   ]
+  },
+  "v2": {
+   "name": "One problem, one answer",
+   "lead": "One problem, one answer",
+   "n": 12,
+   "expect": [
+    "Paragraphs of plain text that give the answer",
+    "A headline that names the problem",
+    "A back arrow, X or Done at the top"
+   ]
+  },
+  "v3": {
+   "name": "Support link list",
+   "lead": "Link list: support, about and legal",
+   "n": 15,
+   "expect": [
+    "A list of tappable rows to support, about and legal pages",
+    "The list starts in the top third of the screen",
+    "A back arrow, X or Done at the top"
+   ]
+  },
+  "v4": {
+   "name": "Full legal text",
+   "lead": "Full legal text",
+   "n": 9,
+   "expect": [
+    "Legal text that fills a large part of the screen",
+    "Paragraphs of plain reading text",
+    "A headline with the policy title",
+    "No contact button and no FAQ rows: the page is the text"
+   ]
+  }
+ },
+ "key_text": [
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "not_checked": [
+  "What happens after a tap on a topic, a contact route or a legal link: one screen cannot show it.",
+  "Whether a question row opens its answer or a search box finds one: that needs a second state.",
+  "Whether the answer on a one-problem page is correct or complete: a screenshot shows the layout, not the content."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "low_label",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 59,
+   "says": "The label on the main button is faint against its fill.",
+   "why": "The only contact route is a small or pale button after a long block of text. Seen on 1 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 4,
+   "of": 59,
+   "says": "The policy page opens as a wall of paragraphs with no short summary at the top.",
+   "why": "Policy pages start as a wall of paragraphs with no short summary at the top. Seen on 4 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 59,
+   "says": "Long steps are set in small pale type on a colour gradient.",
+   "why": "Long steps are set in small pale type on a colour gradient. Seen on 1 of 59 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 52,
+   "of": 59,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back arrow, X or Done on the screen.",
+   "why": "52 of 59 checked screens have \"Back arrow, X or Done at the top\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 42,
+   "of": 59,
+   "low": 0.59,
+   "severity": "warn",
+   "agreement": 0.83,
+   "says": "No large headline that names the topic or asks how to help.",
+   "why": "42 of 59 checked screens have \"Large headline that names the topic or asks how to help\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 51,
+   "of": 52,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back arrow, X or Done is not at the top of the screen.",
+   "why": "Of the 52 screens that have \"Back arrow, X or Done at the top\", 51 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 48,
+   "of": 52,
+   "low": 0.82,
+   "says": "More than one back arrow, X or Done.",
+   "why": "Of the 52 screens that have \"Back arrow, X or Done at the top\", 48 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 22,
+   "of": 24,
+   "low": 0.74,
+   "says": "More than one way to reach a person.",
+   "why": "Of the 24 screens that have \"A way to reach a person\", 22 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 39,
+   "of": 42,
+   "low": 0.81,
+   "says": "More than one large headline.",
+   "why": "Of the 42 screens that have \"Large headline that names the topic or asks how to help\", 39 show exactly one."
+  },
+  {
+   "id": "v1/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 3,
+   "seen": 12,
+   "of": 16,
+   "low": 0.51,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The help start page has no list of tappable rows to topics.",
+   "why": "12 of 16 Help start page screens have \"List of tappable rows to topics or pages\"."
+  },
+  {
+   "id": "v2/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 7,
+   "seen": 12,
+   "of": 12,
+   "low": 0.76,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The one-problem page has no paragraph that gives the answer.",
+   "why": "12 of 12 One problem, one answer screens have \"Paragraphs of plain reading text\"."
+  },
+  {
+   "id": "v3/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v3",
+   "part": 3,
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The link list has no tappable rows.",
+   "why": "15 of 15 Support link list screens have \"List of tappable rows to topics or pages\"."
+  },
+  {
+   "id": "v4/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 6,
+   "seen": 9,
+   "of": 9,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The legal page shows no legal text.",
+   "why": "9 of 9 Full legal text screens have \"Legal text or legal links\"."
+  },
+  {
+   "id": "v4/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 7,
+   "seen": 9,
+   "of": 9,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The legal page has no paragraphs of plain reading text.",
+   "why": "9 of 9 Full legal text screens have \"Paragraphs of plain reading text\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

@@ -1,0 +1,426 @@
+{
+ "type": "account",
+ "name": "Account",
+ "n_read": 64,
+ "n_type": 50,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Back arrow, Close or X at the top",
+   "key_text": false
+  },
+  "2": {
+   "name": "Name, email, phone or other personal details on show",
+   "key_text": false
+  },
+  "3": {
+   "name": "Delete account, log out or cancel subscription control",
+   "key_text": true
+  },
+  "4": {
+   "name": "Plan, membership or status line",
+   "key_text": true
+  },
+  "5": {
+   "name": "Rows with a chevron or link arrow to other pages",
+   "key_text": true
+  },
+  "6": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "7": {
+   "name": "Editable input fields",
+   "key_text": true
+  },
+  "8": {
+   "name": "Avatar or profile photo",
+   "key_text": false
+  },
+  "9": {
+   "name": "Save at the top right",
+   "key_text": true
+  },
+  "10": {
+   "name": "Grey help text on how a detail is used",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Account hub",
+   "lead": "Account hub",
+   "n": 17,
+   "expect": [
+    "A photo or initials near the top",
+    "Name, email or phone in the top third",
+    "Rows or tiles that open other pages",
+    "A plan or status line"
+   ]
+  },
+  "v2": {
+   "name": "Edit personal details",
+   "lead": "Edit personal details",
+   "n": 13,
+   "expect": [
+    "A back arrow or close at the top",
+    "The name, email or phone shown",
+    "Editable fields for the details"
+   ]
+  },
+  "v3": {
+   "name": "Plan and membership",
+   "lead": "Plan and membership",
+   "n": 7,
+   "expect": [
+    "A back arrow or close at the top",
+    "A plan, membership or status line, mostly in the top third"
+   ]
+  },
+  "v4": {
+   "name": "Delete, secure or export",
+   "lead": "Delete, secure or export",
+   "n": 16,
+   "expect": [
+    "A back arrow or close at the top",
+    "A delete, log out or cancel control",
+    "No tab bar under the page"
+   ]
+  }
+ },
+ "key_text": [
+  3,
+  4,
+  5,
+  7,
+  9
+ ],
+ "not_checked": [
+  "What happens after the tap on delete or cancel: one screen cannot show whether another confirm step follows.",
+  "Whether Save at the top right really saves, and whether typed values are kept.",
+  "Whether the plan date is right, or whether other screens of the same app title this job differently.",
+  "Contrast of the personal details text is not measured, because the sample addresses on these screens name the screen source."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 4,
+   "of": 50,
+   "says": "The page title names this job differently from the tab or the rest of the app.",
+   "why": "The same job has many titles: Account, Account settings, Profile, Personal Information, Personal Details. Seen on 4 of 50 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "count_over:7:8",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 1,
+   "of": 50,
+   "says": "Too many editable fields in one scroll.",
+   "why": "A profile page lists a dozen fields in one scroll, most marked Optional or Select. Seen on 1 of 50 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 3,
+   "of": 50,
+   "says": "The red delete option is listed first in the sheet, above the safe choice.",
+   "why": "In the delete sheet the red Delete Account option is the first one listed, above Manage membership and Cancel. Seen on 3 of 50 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 40,
+   "of": 50,
+   "low": 0.67,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back arrow or close control at the top.",
+   "why": "40 of 50 checked screens have \"Back arrow, Close or X at the top\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 31,
+   "of": 50,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "No name, email or phone shown on the screen.",
+   "why": "31 of 50 checked screens have \"Name, email, phone or other personal details on show\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 39,
+   "of": 40,
+   "low": 0.87,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back arrow or close control is not in the top third.",
+   "why": "Of the 40 screens that have \"Back arrow, Close or X at the top\", 39 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 23,
+   "of": 31,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The personal details are not in the top third.",
+   "why": "Of the 31 screens that have \"Name, email, phone or other personal details on show\", 23 put it in the top third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "bottom",
+   "seen": 18,
+   "of": 18,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not at the bottom.",
+   "why": "Of the 18 screens that have \"Bottom tab bar\", 18 put it in the bottom third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "top",
+   "seen": 18,
+   "of": 20,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The photo or initials are not at the top.",
+   "why": "Of the 20 screens that have \"Avatar or profile photo\", 18 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 39,
+   "of": 40,
+   "low": 0.87,
+   "says": "More than one back arrow or close control.",
+   "why": "Of the 40 screens that have \"Back arrow, Close or X at the top\", 39 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 18,
+   "of": 18,
+   "low": 0.82,
+   "says": "More than one tab bar.",
+   "why": "Of the 18 screens that have \"Bottom tab bar\", 18 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 19,
+   "of": 20,
+   "low": 0.76,
+   "says": "More than one photo or avatar.",
+   "why": "Of the 20 screens that have \"Avatar or profile photo\", 19 show exactly one."
+  },
+  {
+   "id": "v1/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 5,
+   "seen": 14,
+   "of": 17,
+   "low": 0.59,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "An account hub with no rows or tiles that open other pages.",
+   "why": "14 of 17 Account hub screens have \"Rows with a chevron or link arrow to other pages\"."
+  },
+  {
+   "id": "v1/presence/8",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 8,
+   "seen": 13,
+   "of": 17,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "An account hub with no photo or initials.",
+   "why": "13 of 17 Account hub screens have \"Avatar or profile photo\"."
+  },
+  {
+   "id": "v2/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 7,
+   "seen": 10,
+   "of": 13,
+   "low": 0.5,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "A page for editing details with no editable field.",
+   "why": "10 of 13 Edit personal details screens have \"Editable input fields\". Held at a hint: a second reader agrees on whether it is there on only 100% of the screens read twice."
+  },
+  {
+   "id": "v4/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 16,
+   "low": 0.03,
+   "says": "Delete, secure or export screens are not checked for \"Bottom tab bar\".",
+   "why": "Only 2 of 16 Delete, secure or export screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 16,
+   "low": 0.03,
+   "says": "Delete, secure or export screens are not checked for \"Avatar or profile photo\".",
+   "why": "Only 2 of 16 Delete, secure or export screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

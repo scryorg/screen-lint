@@ -1,0 +1,420 @@
+{
+ "type": "permission",
+ "name": "Permission",
+ "n_read": 64,
+ "n_type": 58,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Reason written in the app's own words",
+   "key_text": true
+  },
+  "2": {
+   "name": "App's own button",
+   "key_text": true
+  },
+  "3": {
+   "name": "Picture or icon",
+   "key_text": false
+  },
+  "4": {
+   "name": "Visible no, skip or not-now choice",
+   "key_text": true
+  },
+  "5": {
+   "name": "System permission dialog on top",
+   "key_text": false
+  },
+  "6": {
+   "name": "Back, close or skip at the top",
+   "key_text": false
+  },
+  "7": {
+   "name": "Several choices on one screen (toggles, boxes, Yes/No)",
+   "key_text": false
+  },
+  "8": {
+   "name": "Privacy or policy link",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "App asks first",
+   "lead": "App asks first",
+   "n": 37,
+   "expect": [
+    "A reason in the app's own words, on nearly every screen",
+    "One button of the app's own, in the bottom third",
+    "A picture or icon that shows what the access is for, on most screens"
+   ]
+  },
+  "v2": {
+   "name": "System dialog on top",
+   "lead": "System dialog on top",
+   "n": 18,
+   "expect": [
+    "One phone dialog, in the middle third",
+    "The app's own screen dimmed behind the dialog",
+    "Usually no back or close control at the top"
+   ]
+  },
+  "v3": {
+   "name": "Data consent",
+   "lead": "Data consent",
+   "n": 9,
+   "expect": [
+    "A reason in the app's own words, on nearly every screen",
+    "One button of the app's own, in the bottom third",
+    "A privacy or policy link, in the middle or bottom third, on most screens"
+   ]
+  },
+  "v4": {
+   "name": "Several asks on one screen",
+   "lead": "Several asks on one screen",
+   "n": 6,
+   "expect": []
+  }
+ },
+ "key_text": [
+  1,
+  2,
+  4
+ ],
+ "not_checked": [
+  "What happens after the tap: the phone's own dialog comes next, and one screenshot cannot show it.",
+  "Whether yes is the bigger button and no is the quiet one: the check does not weigh the two against each other.",
+  "Whether the reason matches the access being asked for when the screen behind a dialog is blurred and cannot be read."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "part_missing:1",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 9,
+   "of": 58,
+   "says": "No reason in the app's own words: only the system dialog speaks, or the app's text is hidden behind it.",
+   "why": "Only the system dialog is visible, so the reason for the ask shows nowhere. Seen on 9 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 1,
+   "of": 58,
+   "says": "Long consent text runs under the tab bar and the last policy line is cut off.",
+   "why": "Long consent text runs under the tab bar, and the last policy line is cut off. Seen on 1 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 58,
+   "says": "The system dialog asks for one thing while the screen behind it is about another.",
+   "why": "The system dialog asks about notifications while the screen behind it says 'Turn on Location Services'. Seen on 1 of 58 checked screens."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 39,
+   "of": 58,
+   "low": 0.54,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "No picture or icon on the screen.",
+   "why": "39 of 58 checked screens have \"Picture or icon\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 48,
+   "of": 58,
+   "low": 0.71,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No reason written in the app's own words.",
+   "why": "48 of 58 checked screens have \"Reason written in the app's own words\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 46,
+   "of": 58,
+   "low": 0.67,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "No button of the app's own.",
+   "why": "46 of 58 checked screens have \"App's own button\"."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "bottom",
+   "seen": 39,
+   "of": 46,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "The app's own button is not in the bottom third.",
+   "why": "Of the 46 screens that have \"App's own button\", 39 put it in the bottom third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "mid",
+   "seen": 18,
+   "of": 18,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The system dialog is not in the middle third.",
+   "why": "Of the 18 screens that have \"System permission dialog on top\", 18 put it in the mid third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "top",
+   "seen": 17,
+   "of": 18,
+   "low": 0.74,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back, close or skip control is not in the top third.",
+   "why": "Of the 18 screens that have \"Back, close or skip at the top\", 17 put it in the top third."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 46,
+   "of": 46,
+   "low": 0.92,
+   "says": "More than one button of the app's own.",
+   "why": "Of the 46 screens that have \"App's own button\", 46 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 33,
+   "of": 39,
+   "low": 0.7,
+   "says": "More than one picture or icon.",
+   "why": "Of the 39 screens that have \"Picture or icon\", 33 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 26,
+   "of": 27,
+   "low": 0.82,
+   "says": "More than one visible no, skip or not-now choice.",
+   "why": "Of the 27 screens that have \"Visible no, skip or not-now choice\", 26 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 18,
+   "of": 18,
+   "low": 0.82,
+   "says": "More than one system dialog on the screen.",
+   "why": "Of the 18 screens that have \"System permission dialog on top\", 18 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 16,
+   "of": 18,
+   "low": 0.67,
+   "says": "More than one back, close or skip control at the top.",
+   "why": "Of the 18 screens that have \"Back, close or skip at the top\", 16 show exactly one."
+  },
+  {
+   "id": "v1/exempt/5",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 5,
+   "exempts": [
+    "position/5"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 37,
+   "low": 0.04,
+   "says": "App asks first screens are not checked for \"System permission dialog on top\".",
+   "why": "Only 4 of 37 App asks first screens have it, so position/5 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 18,
+   "of": 18,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No system permission dialog over the app's screen.",
+   "why": "18 of 18 System dialog on top screens have \"System permission dialog on top\"."
+  },
+  {
+   "id": "v2/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 18,
+   "low": 0.06,
+   "says": "System dialog on top screens are not checked for \"Back, close or skip at the top\".",
+   "why": "Only 3 of 18 System dialog on top screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/5",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 5,
+   "exempts": [
+    "position/5"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 9,
+   "low": 0.02,
+   "says": "Data consent screens are not checked for \"System permission dialog on top\".",
+   "why": "Only 1 of 9 Data consent screens have it, so position/5 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

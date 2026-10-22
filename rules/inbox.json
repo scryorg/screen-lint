@@ -1,0 +1,633 @@
+{
+ "type": "inbox",
+ "name": "Inbox",
+ "n_read": 64,
+ "n_type": 58,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Title that names the list",
+   "key_text": true
+  },
+  "2": {
+   "name": "Rows with a name or title, most with a time at the right",
+   "key_text": true
+  },
+  "3": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "4": {
+   "name": "Search field or icon",
+   "key_text": false
+  },
+  "5": {
+   "name": "New-message or compose button",
+   "key_text": false
+  },
+  "6": {
+   "name": "Empty-state message",
+   "key_text": true
+  },
+  "7": {
+   "name": "Round avatar at the left of the row",
+   "key_text": false
+  },
+  "8": {
+   "name": "Filter tabs, chips or a filter button",
+   "key_text": false
+  },
+  "9": {
+   "name": "Unread marker (dot, 'new' pill or count badge)",
+   "key_text": false
+  },
+  "10": {
+   "name": "Separate place for requests or unknown senders",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Conversation list",
+   "lead": "Conversation list",
+   "n": 26,
+   "expect": [
+    "Rows of people or groups, each with a name and a time",
+    "A round avatar at the left of each row",
+    "A title in the top third"
+   ]
+  },
+  "v2": {
+   "name": "Email mailbox",
+   "lead": "Email mailbox",
+   "n": 9,
+   "expect": [
+    "A title or mailbox name in the top third",
+    "A new-message button, mostly floating at the bottom",
+    "A search field or icon, mostly at the top"
+   ]
+  },
+  "v3": {
+   "name": "Notice inbox",
+   "lead": "Notice inbox",
+   "n": 10,
+   "expect": [
+    "A title in the top third",
+    "Short rows or cards of notices from the app",
+    "No round avatars, because no people are in the list"
+   ]
+  },
+  "v4": {
+   "name": "Empty chat list",
+   "lead": "Empty chat list that asks for friends",
+   "n": 11,
+   "expect": [
+    "A title in the top third",
+    "An empty-state message in the middle of the screen",
+    "A bottom tab bar on most of them",
+    "A new-message or add button on most of them"
+   ]
+  }
+ },
+ "key_text": [
+  1,
+  2,
+  6
+ ],
+ "not_checked": [
+  "What happens after a tap on a row, the compose button or an empty-state button: one screen cannot show the next screen.",
+  "Whether an unread dot clears once a row is opened, and whether a tab badge counts down.",
+  "How search and filters change the list: the results are a second state."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 58,
+   "says": "The floating compose button sits on a row and hides the end of its time.",
+   "why": "The floating compose button sits on a row and covers the end of its time stamp. Seen on 1 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "part_area_over:2:70",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 1,
+   "of": 58,
+   "says": "The items are so large that they fill almost the whole screen under the title, so only a few are in view.",
+   "why": "Large image cards fill the page, so only three items are in view at once. Seen on 1 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 10,
+   "of": 58,
+   "says": "The empty state names the problem and gives no button or link for a next step.",
+   "why": "The empty state says 'No messages' and offers no next step. Seen on 10 of 58 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 53,
+   "of": 58,
+   "low": 0.81,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "No title names the list.",
+   "why": "53 of 58 checked screens have \"Title that names the list\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 40,
+   "of": 58,
+   "low": 0.56,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No rows of messages or notices on the screen.",
+   "why": "40 of 58 checked screens have \"Rows with a name or title, most with a time at the right\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 52,
+   "of": 53,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "The title is not in the top third.",
+   "why": "Of the 53 screens that have \"Title that names the list\", 52 put it in the top third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 32,
+   "of": 40,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The rows start below the top third.",
+   "why": "Of the 40 screens that have \"Rows with a name or title, most with a time at the right\", 32 put it in the top third."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "bottom",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not at the bottom.",
+   "why": "Of the 32 screens that have \"Bottom tab bar\", 32 put it in the bottom third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "top",
+   "seen": 24,
+   "of": 29,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The search field or icon is not in the top third.",
+   "why": "Of the 29 screens that have \"Search field or icon\", 24 put it in the top third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "mid",
+   "seen": 17,
+   "of": 19,
+   "low": 0.69,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The empty-state message is not in the middle of the screen.",
+   "why": "Of the 19 screens that have \"Empty-state message\", 17 put it in the mid third."
+  },
+  {
+   "id": "position/7",
+   "kind": "convention",
+   "test": "position",
+   "part": 7,
+   "third": "top",
+   "seen": 24,
+   "of": 29,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The row avatar sits below the top third.",
+   "why": "Of the 29 screens that have \"Round avatar at the left of the row\", 24 put it in the top third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "top",
+   "seen": 17,
+   "of": 17,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The filter tabs or chips are not in the top third.",
+   "why": "Of the 17 screens that have \"Filter tabs, chips or a filter button\", 17 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 53,
+   "of": 53,
+   "low": 0.93,
+   "says": "More than one title on the screen.",
+   "why": "Of the 53 screens that have \"Title that names the list\", 53 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "says": "More than one bottom tab bar.",
+   "why": "Of the 32 screens that have \"Bottom tab bar\", 32 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 29,
+   "of": 29,
+   "low": 0.88,
+   "says": "More than one search field or icon.",
+   "why": "Of the 29 screens that have \"Search field or icon\", 29 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "says": "More than one new-message button.",
+   "why": "Of the 32 screens that have \"New-message or compose button\", 32 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 19,
+   "of": 19,
+   "low": 0.83,
+   "says": "More than one empty-state message.",
+   "why": "Of the 19 screens that have \"Empty-state message\", 19 show exactly one."
+  },
+  {
+   "id": "v1/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 26,
+   "low": 0.01,
+   "says": "Conversation list screens are not checked for \"Empty-state message\".",
+   "why": "Only 1 of 26 Conversation list screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v1/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 7,
+   "seen": 22,
+   "of": 26,
+   "low": 0.66,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A conversation list with no round avatar beside its rows.",
+   "why": "22 of 26 Conversation list screens have \"Round avatar at the left of the row\"."
+  },
+  {
+   "id": "v1/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 5,
+   "of": 26,
+   "low": 0.09,
+   "says": "Conversation list screens are not checked for \"Filter tabs, chips or a filter button\".",
+   "why": "Only 5 of 26 Conversation list screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/3",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 3,
+   "exempts": [
+    "position/3"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 9,
+   "low": 0.06,
+   "says": "Email mailbox screens are not checked for \"Bottom tab bar\".",
+   "why": "Only 2 of 9 Email mailbox screens have it, so position/3 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 7,
+   "of": 9,
+   "low": 0.45,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "A mailbox with no new-message button.",
+   "why": "7 of 9 Email mailbox screens have \"New-message or compose button\"."
+  },
+  {
+   "id": "v2/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 9,
+   "low": 0.06,
+   "says": "Email mailbox screens are not checked for \"Filter tabs, chips or a filter button\".",
+   "why": "Only 2 of 9 Email mailbox screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 10,
+   "low": 0.02,
+   "says": "Notice inbox screens are not checked for \"Search field or icon\".",
+   "why": "Only 1 of 10 Notice inbox screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Notice inbox screens are not checked for \"Empty-state message\".",
+   "why": "Only 2 of 10 Notice inbox screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 10,
+   "low": 0.02,
+   "says": "Notice inbox screens are not checked for \"Round avatar at the left of the row\".",
+   "why": "Only 1 of 10 Notice inbox screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/exempt/2",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 2,
+   "exempts": [
+    "presence/2",
+    "position/2"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 11,
+   "low": 0.02,
+   "says": "Empty chat list screens are not checked for \"Rows with a name or title, most with a time at the right\".",
+   "why": "Only 1 of 11 Empty chat list screens have it, so presence/2 and position/2 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 3,
+   "seen": 8,
+   "of": 11,
+   "low": 0.43,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "An empty chat list with no bottom tab bar.",
+   "why": "8 of 11 Empty chat list screens have \"Bottom tab bar\"."
+  },
+  {
+   "id": "v4/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 11,
+   "low": 0.1,
+   "says": "Empty chat list screens are not checked for \"Search field or icon\".",
+   "why": "Only 3 of 11 Empty chat list screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v4/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 6,
+   "seen": 11,
+   "of": 11,
+   "low": 0.74,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "An empty chat list with no empty-state message.",
+   "why": "11 of 11 Empty chat list screens have \"Empty-state message\"."
+  },
+  {
+   "id": "v4/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 11,
+   "low": 0.02,
+   "says": "Empty chat list screens are not checked for \"Round avatar at the left of the row\".",
+   "why": "Only 1 of 11 Empty chat list screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

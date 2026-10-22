@@ -1,0 +1,391 @@
+{
+ "type": "settings",
+ "name": "Settings",
+ "n_read": 64,
+ "n_type": 61,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Back arrow or close X at the top",
+   "key_text": false
+  },
+  "2": {
+   "name": "Rows with a chevron that open a sub-page",
+   "key_text": true
+  },
+  "3": {
+   "name": "On/off toggle at the right end of the row",
+   "key_text": false
+  },
+  "4": {
+   "name": "Group heading in small grey or capital type",
+   "key_text": true
+  },
+  "5": {
+   "name": "Grey help sentence under a row",
+   "key_text": true
+  },
+  "6": {
+   "name": "Current value shown at the right of the row",
+   "key_text": true
+  },
+  "7": {
+   "name": "Slider, stepper, radio, check or time picker",
+   "key_text": false
+  },
+  "8": {
+   "name": "Bottom tab bar still visible",
+   "key_text": false
+  },
+  "9": {
+   "name": "Log out, sign out or reset row near the end",
+   "key_text": true
+  },
+  "10": {
+   "name": "Version number",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Switch list",
+   "lead": "Switch list",
+   "n": 25,
+   "expect": [
+    "An on/off toggle at the right end of the row, on nearly every screen",
+    "A grey help sentence under many of the switches",
+    "A back arrow or close X at the top"
+   ]
+  },
+  "v2": {
+   "name": "Pick one option",
+   "lead": "Pick one option",
+   "n": 12,
+   "expect": [
+    "A radio, check or other pick control beside the options",
+    "A back arrow or close X at the top",
+    "Few or no switches and no chevron rows"
+   ]
+  },
+  "v3": {
+   "name": "Sliders and steppers",
+   "lead": "Sliders and steppers",
+   "n": 5,
+   "expect": []
+  },
+  "v4": {
+   "name": "Link list and exits",
+   "lead": "Link list and exits",
+   "n": 21,
+   "expect": [
+    "Rows with a chevron that open a sub-page",
+    "A back arrow or close X at the top",
+    "Small group headings above the rows"
+   ]
+  }
+ },
+ "key_text": [
+  2,
+  4,
+  5,
+  6,
+  9
+ ],
+ "not_checked": [
+  "What a row does after the tap: a chevron, a switch or a pick control cannot be tried on one screenshot.",
+  "Whether a switch changes the screen when it flips, or whether a log out row asks to confirm."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 2,
+   "of": 61,
+   "says": "The help text is tiny grey type that is hard to read, most of all on a dark page.",
+   "why": "Help text is very small grey type, and on dark pages it is hard to read. Seen on 2 of 61 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 1,
+   "of": 61,
+   "says": "The page is titled Settings but holds feedback links and promotions for other apps instead of controls.",
+   "why": "A page titled Settings holds feedback links and promotions for other apps rather than controls. Seen on 1 of 61 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 4,
+   "of": 61,
+   "says": "The page holds a single row and a large empty area.",
+   "why": "The page holds one row and a large empty area. Seen on 4 of 61 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 51,
+   "of": 61,
+   "low": 0.72,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No back arrow or close X at the top.",
+   "why": "51 of 61 checked screens have \"Back arrow or close X at the top\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 50,
+   "of": 51,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The back arrow or close X sits below the top third of the screen.",
+   "why": "Of the 51 screens that have \"Back arrow or close X at the top\", 50 put it in the top third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "top",
+   "seen": 33,
+   "of": 35,
+   "low": 0.81,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The group heading sits below the top third of the screen.",
+   "why": "Of the 35 screens that have \"Group heading in small grey or capital type\", 33 put it in the top third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "bottom",
+   "seen": 17,
+   "of": 17,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The bottom tab bar is not in the bottom third of the screen.",
+   "why": "Of the 17 screens that have \"Bottom tab bar still visible\", 17 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 49,
+   "of": 51,
+   "low": 0.87,
+   "says": "More than one back arrow or close X is drawn.",
+   "why": "Of the 51 screens that have \"Back arrow or close X at the top\", 49 show exactly one."
+  },
+  {
+   "id": "count/8",
+   "kind": "convention",
+   "test": "count",
+   "part": 8,
+   "severity": "hint",
+   "seen": 17,
+   "of": 17,
+   "low": 0.82,
+   "says": "More than one bottom tab bar is drawn.",
+   "why": "Of the 17 screens that have \"Bottom tab bar still visible\", 17 show exactly one."
+  },
+  {
+   "id": "count/9",
+   "kind": "convention",
+   "test": "count",
+   "part": 9,
+   "severity": "hint",
+   "seen": 10,
+   "of": 12,
+   "low": 0.55,
+   "says": "More than one log out or reset row is drawn.",
+   "why": "Of the 12 screens that have \"Log out, sign out or reset row near the end\", 10 show exactly one."
+  },
+  {
+   "id": "v1/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 3,
+   "seen": 24,
+   "of": 25,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A switch list with no on/off toggle at the right end of a row.",
+   "why": "24 of 25 Switch list screens have \"On/off toggle at the right end of the row\"."
+  },
+  {
+   "id": "v1/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 5,
+   "seen": 20,
+   "of": 25,
+   "low": 0.61,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A switch list with no grey help sentence under any row.",
+   "why": "20 of 25 Switch list screens have \"Grey help sentence under a row\"."
+  },
+  {
+   "id": "v2/presence/7",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 7,
+   "seen": 10,
+   "of": 12,
+   "low": 0.55,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A pick-one list with no radio, check or other pick control.",
+   "why": "10 of 12 Pick one option screens have \"Slider, stepper, radio, check or time picker\"."
+  },
+  {
+   "id": "v4/presence/2",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v4",
+   "part": 2,
+   "seen": 17,
+   "of": 21,
+   "low": 0.6,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A link list with no row that has a chevron to open a sub-page.",
+   "why": "17 of 21 Link list and exits screens have \"Rows with a chevron that open a sub-page\"."
+  },
+  {
+   "id": "v4/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 21,
+   "low": 0.08,
+   "says": "Link list and exits screens are not checked for \"Bottom tab bar still visible\".",
+   "why": "Only 4 of 21 Link list and exits screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

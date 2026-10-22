@@ -1,0 +1,484 @@
+{
+ "type": "compose",
+ "name": "Compose",
+ "n_read": 64,
+ "n_type": 52,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "The thing being made fills the middle",
+   "key_text": false
+  },
+  "2": {
+   "name": "A way out (Cancel, Close, X, back or Exit)",
+   "key_text": true
+  },
+  "3": {
+   "name": "Commit button",
+   "key_text": true
+  },
+  "4": {
+   "name": "Tool strip or row of tool tabs",
+   "key_text": true
+  },
+  "5": {
+   "name": "Options panel under the work",
+   "key_text": false
+  },
+  "6": {
+   "name": "Keyboard open",
+   "key_text": false
+  },
+  "7": {
+   "name": "Undo or redo arrows",
+   "key_text": false
+  },
+  "8": {
+   "name": "Audience or recipient chip",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Text composer",
+   "lead": "Text composer",
+   "n": 21,
+   "expect": [
+    "The text page fills the middle of the screen",
+    "A way out, Cancel or Close, sits at the top",
+    "A commit button such as Post, Done or Next",
+    "The keyboard is open along the bottom"
+   ]
+  },
+  "v2": {
+   "name": "Photo or video editor",
+   "lead": "Photo or video editor",
+   "n": 10,
+   "expect": [
+    "The picture or clip fills the middle of the screen",
+    "A commit button such as Done, Next or Send",
+    "A way out, Cancel or Close, next to it",
+    "No keyboard is up"
+   ]
+  },
+  "v3": {
+   "name": "Canvas or builder",
+   "lead": "Canvas or builder",
+   "n": 10,
+   "expect": [
+    "The board, page or timeline fills the middle of the screen",
+    "A tool strip or row of tool tabs",
+    "A way out at the top of the screen",
+    "No keyboard is up"
+   ]
+  },
+  "v4": {
+   "name": "Customizer",
+   "lead": "Customizer",
+   "n": 4,
+   "expect": []
+  }
+ },
+ "key_text": [
+  2,
+  3,
+  4
+ ],
+ "not_checked": [
+  "What happens after the tap on the commit button, and whether the work is saved or thrown away: one screen cannot show it.",
+  "Whether undo, redo and the tools change the work, and how the work looks in a second state.",
+  "Whether the keyboard comes up by itself when a text page opens."
+ ],
+ "candidates": [
+  {
+   "name": "Post or details editor form",
+   "count": 5
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 52,
+   "says": "Text breaks in the middle of a word.",
+   "why": "Text breaks in the middle of a word on the card ('Christma' then 's!') because of wide letter spacing. Seen on 1 of 52 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 3,
+   "of": 52,
+   "says": "Tool labels are small and pale against their background.",
+   "why": "Tool labels are very small and pale grey. Seen on 3 of 52 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 52,
+   "says": "Labels on the canvas or timeline are too small to read.",
+   "why": "Labels on the timeline are too small to read. Seen on 2 of 52 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 52,
+   "of": 52,
+   "low": 0.93,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The thing being made is not on the screen.",
+   "why": "52 of 52 checked screens have \"The thing being made fills the middle\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 42,
+   "of": 52,
+   "low": 0.68,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No way out: no Cancel, Close, X, back or Exit.",
+   "why": "42 of 52 checked screens have \"A way out (Cancel, Close, X, back or Exit)\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 45,
+   "of": 52,
+   "low": 0.75,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No commit button.",
+   "why": "45 of 52 checked screens have \"Commit button\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "mid",
+   "seen": 40,
+   "of": 52,
+   "low": 0.64,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The thing being made does not sit in the middle of the screen.",
+   "why": "Of the 52 screens that have \"The thing being made fills the middle\", 40 put it in the mid third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 37,
+   "of": 42,
+   "low": 0.75,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The way out is not at the top of the screen.",
+   "why": "Of the 42 screens that have \"A way out (Cancel, Close, X, back or Exit)\", 37 put it in the top third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "bottom",
+   "seen": 15,
+   "of": 19,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The options panel is not at the bottom, under the work.",
+   "why": "Of the 19 screens that have \"Options panel under the work\", 15 put it in the bottom third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "bottom",
+   "seen": 20,
+   "of": 20,
+   "low": 0.84,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The keyboard is not along the bottom of the screen.",
+   "why": "Of the 20 screens that have \"Keyboard open\", 20 put it in the bottom third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 51,
+   "of": 52,
+   "low": 0.9,
+   "says": "The thing being made is split into more than one block.",
+   "why": "Of the 52 screens that have \"The thing being made fills the middle\", 51 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 38,
+   "of": 42,
+   "low": 0.78,
+   "says": "More than one way out is shown.",
+   "why": "Of the 42 screens that have \"A way out (Cancel, Close, X, back or Exit)\", 38 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 43,
+   "of": 45,
+   "low": 0.85,
+   "says": "More than one commit button is shown.",
+   "why": "Of the 45 screens that have \"Commit button\", 43 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 27,
+   "of": 31,
+   "low": 0.71,
+   "says": "More than one tool strip is shown.",
+   "why": "Of the 31 screens that have \"Tool strip or row of tool tabs\", 27 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 18,
+   "of": 19,
+   "low": 0.75,
+   "says": "More than one options panel is shown.",
+   "why": "Of the 19 screens that have \"Options panel under the work\", 18 show exactly one."
+  },
+  {
+   "id": "count/6",
+   "kind": "convention",
+   "test": "count",
+   "part": 6,
+   "severity": "hint",
+   "seen": 20,
+   "of": 20,
+   "low": 0.84,
+   "says": "More than one keyboard area is shown.",
+   "why": "Of the 20 screens that have \"Keyboard open\", 20 show exactly one."
+  },
+  {
+   "id": "v1/exempt/5",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 5,
+   "exempts": [
+    "position/5"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 21,
+   "low": 0.08,
+   "says": "Text composer screens are not checked for \"Options panel under the work\".",
+   "why": "Only 4 of 21 Text composer screens have it, so position/5 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v1/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 6,
+   "seen": 18,
+   "of": 21,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A text composer with no keyboard open.",
+   "why": "18 of 21 Text composer screens have \"Keyboard open\"."
+  },
+  {
+   "id": "v2/exempt/5",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 5,
+   "exempts": [
+    "position/5"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Photo or video editor screens are not checked for \"Options panel under the work\".",
+   "why": "Only 2 of 10 Photo or video editor screens have it, so position/5 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Photo or video editor screens are not checked for \"Keyboard open\".",
+   "why": "Only 2 of 10 Photo or video editor screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v3/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v3",
+   "part": 4,
+   "seen": 9,
+   "of": 10,
+   "low": 0.6,
+   "severity": "warn",
+   "agreement": 0.8,
+   "says": "A canvas or builder with no tool strip.",
+   "why": "9 of 10 Canvas or builder screens have \"Tool strip or row of tool tabs\"."
+  },
+  {
+   "id": "v3/exempt/6",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v3",
+   "part": 6,
+   "exempts": [
+    "position/6"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 10,
+   "low": 0.02,
+   "says": "Canvas or builder screens are not checked for \"Keyboard open\".",
+   "why": "Only 1 of 10 Canvas or builder screens have it, so position/6 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

@@ -1,0 +1,382 @@
+{
+ "type": "feed",
+ "name": "Feed",
+ "n_read": 64,
+ "n_type": 51,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Image, video or logo on each item",
+   "key_text": false
+  },
+  "2": {
+   "name": "Source or author line on each item",
+   "key_text": true
+  },
+  "3": {
+   "name": "Bottom tab bar",
+   "key_text": false
+  },
+  "4": {
+   "name": "Action on each item (like, react, save, upvote, open)",
+   "key_text": false
+  },
+  "5": {
+   "name": "Chips, tabs or a dropdown to change the stream",
+   "key_text": true
+  },
+  "6": {
+   "name": "Heading above the stream or a group of items",
+   "key_text": true
+  },
+  "7": {
+   "name": "Photo or video across the full width of the item",
+   "key_text": false
+  },
+  "8": {
+   "name": "'...' menu on the item",
+   "key_text": false
+  },
+  "9": {
+   "name": "Counts shown (likes, upvotes, views, scores)",
+   "key_text": true
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Posts and reviews",
+   "lead": "Posts and reviews from people",
+   "n": 16,
+   "expect": [
+    "A name or source line on every post",
+    "A heading at the top above the posts",
+    "A picture, avatar or logo on most posts",
+    "A like or react control on most posts"
+   ]
+  },
+  "v2": {
+   "name": "News and article cards",
+   "lead": "News and article cards",
+   "n": 19,
+   "expect": [
+    "An image, video or logo on nearly every card",
+    "A heading above the cards or a group of them",
+    "A source line on most cards",
+    "A bottom tab bar under the stream"
+   ]
+  },
+  "v3": {
+   "name": "One item per screen",
+   "lead": "One item per screen",
+   "n": 5,
+   "expect": []
+  },
+  "v4": {
+   "name": "Compact ranked or queued list",
+   "lead": "Compact ranked or queued list",
+   "n": 4,
+   "expect": []
+  }
+ },
+ "key_text": [
+  2,
+  5,
+  6,
+  9
+ ],
+ "not_checked": [
+  "What happens after a tap on an item, a chip or a tab: one screen cannot show it.",
+  "Loading more items, pull to refresh and how new items arrive: one screen shows only the first items."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 18,
+   "of": 51,
+   "says": "The tab bar icons have no words under them.",
+   "why": "Tab bar icons with no words: 8 of the 10 tab bars (Hush, Must, Edits and 5 more) rely on icons alone. Seen on 18 of 51 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 2,
+   "of": 51,
+   "says": "An image slot is a blank grey placeholder, or a plain black circle with no glyph sits beside the heading.",
+   "why": "An image slot shows a blank grey placeholder on the first item of Gawq; Vivino has a solid black circle beside its heading. Seen on 2 of 51 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 51,
+   "says": "The last card fades into a blur at the bottom edge, so its text cannot be read.",
+   "why": "The last card of Dot fades into a blur at the bottom edge, so its text cannot be read. Seen on 2 of 51 checked screens."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 38,
+   "of": 51,
+   "low": 0.61,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No source or author line on the items.",
+   "why": "38 of 51 checked screens have \"Source or author line on each item\"."
+  },
+  {
+   "id": "presence/6",
+   "kind": "convention",
+   "test": "presence",
+   "part": 6,
+   "seen": 36,
+   "of": 51,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No heading above the stream or a group of items.",
+   "why": "36 of 51 checked screens have \"Heading above the stream or a group of items\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 34,
+   "of": 51,
+   "low": 0.53,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No bottom tab bar.",
+   "why": "34 of 51 checked screens have \"Bottom tab bar\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 45,
+   "of": 51,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 0.83,
+   "says": "No image, video or logo leads the items.",
+   "why": "45 of 51 checked screens have \"Image, video or logo on each item\"."
+  },
+  {
+   "id": "position/3",
+   "kind": "convention",
+   "test": "position",
+   "part": 3,
+   "third": "bottom",
+   "seen": 34,
+   "of": 34,
+   "low": 0.9,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The tab bar is not at the bottom of the screen.",
+   "why": "Of the 34 screens that have \"Bottom tab bar\", 34 put it in the bottom third."
+  },
+  {
+   "id": "position/5",
+   "kind": "convention",
+   "test": "position",
+   "part": 5,
+   "third": "top",
+   "seen": 22,
+   "of": 26,
+   "low": 0.66,
+   "severity": "warn",
+   "agreement": 0.83,
+   "says": "The chips, tabs or dropdown that change the stream are not in the top third.",
+   "why": "Of the 26 screens that have \"Chips, tabs or a dropdown to change the stream\", 22 put it in the top third."
+  },
+  {
+   "id": "position/6",
+   "kind": "convention",
+   "test": "position",
+   "part": 6,
+   "third": "top",
+   "seen": 29,
+   "of": 36,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The heading sits below the top third of the screen.",
+   "why": "Of the 36 screens that have \"Heading above the stream or a group of items\", 29 put it in the top third."
+  },
+  {
+   "id": "position/7",
+   "kind": "convention",
+   "test": "position",
+   "part": 7,
+   "third": "mid",
+   "seen": 20,
+   "of": 27,
+   "low": 0.55,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The full-width photo or video is not in the middle third.",
+   "why": "Of the 27 screens that have \"Photo or video across the full width of the item\", 20 put it in the mid third."
+  },
+  {
+   "id": "position/8",
+   "kind": "convention",
+   "test": "position",
+   "part": 8,
+   "third": "top",
+   "seen": 11,
+   "of": 15,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The menu on the item is not in the top third.",
+   "why": "Of the 15 screens that have \"'...' menu on the item\", 11 put it in the top third."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 34,
+   "of": 34,
+   "low": 0.9,
+   "says": "More than one bottom tab bar.",
+   "why": "Of the 34 screens that have \"Bottom tab bar\", 34 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 22,
+   "of": 26,
+   "low": 0.66,
+   "says": "More than one set of chips, tabs or dropdowns for the stream.",
+   "why": "Of the 26 screens that have \"Chips, tabs or a dropdown to change the stream\", 22 show exactly one."
+  },
+  {
+   "id": "v2/exempt/8",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 8,
+   "exempts": [
+    "position/8"
+   ],
+   "severity": null,
+   "seen": 3,
+   "of": 19,
+   "low": 0.06,
+   "says": "News and article cards screens are not checked for \"'...' menu on the item\".",
+   "why": "Only 3 of 19 News and article cards screens have it, so position/8 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

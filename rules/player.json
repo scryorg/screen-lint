@@ -1,0 +1,393 @@
+{
+ "type": "player",
+ "name": "Player",
+ "n_read": 64,
+ "n_type": 52,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Title or name of what is playing",
+   "key_text": true
+  },
+  "2": {
+   "name": "Large video, artwork or photo",
+   "key_text": false
+  },
+  "3": {
+   "name": "Icons for share, like, queue, cast or more",
+   "key_text": false
+  },
+  "4": {
+   "name": "Scrub bar or waveform",
+   "key_text": false
+  },
+  "5": {
+   "name": "Play or pause button",
+   "key_text": false
+  },
+  "6": {
+   "name": "Time readout (elapsed and remaining)",
+   "key_text": true
+  },
+  "7": {
+   "name": "Down arrow at the top left to minimize",
+   "key_text": false
+  },
+  "8": {
+   "name": "Skip or jump-15-seconds buttons",
+   "key_text": false
+  },
+  "9": {
+   "name": "Live badge or audience count",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Full-screen video",
+   "lead": "Full-screen video",
+   "n": 28,
+   "expect": [
+    "The video fills the width of the screen, mostly in the middle",
+    "A title printed with the video",
+    "A scrub bar to show progress"
+   ]
+  },
+  "v2": {
+   "name": "Audio with artwork",
+   "lead": "Audio with artwork and controls",
+   "n": 15,
+   "expect": [
+    "Large artwork and a title in the upper two thirds of the screen",
+    "A scrub bar with a time readout",
+    "A play or pause button toward the bottom",
+    "Icons for share, like or queue"
+   ]
+  },
+  "v3": {
+   "name": "Live room or broadcast",
+   "lead": "Live room or broadcast",
+   "n": 5,
+   "expect": []
+  },
+  "v4": {
+   "name": "Calm and sleep sessions",
+   "lead": "Calm and sleep sessions",
+   "n": 3,
+   "expect": []
+  }
+ },
+ "key_text": [
+  1,
+  6
+ ],
+ "not_checked": [
+  "Many players hide their controls until a tap, so one screen can miss a title or buttons that appear on the next tap.",
+  "Playback itself: whether pause, skip and scrub respond, and how the sheet slides away, cannot be seen in a still.",
+  "Whether a live badge is right: one screen cannot show if the stream is live or on demand."
+ ],
+ "candidates": [
+  {
+   "name": "Video letterboxed on black",
+   "count": 3
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 6,
+   "of": 52,
+   "says": "No title and no controls show while the media plays, so there is no sign of how to pause or leave.",
+   "why": "No title or controls are visible while the media plays, so it is hard to tell how to pause or leave. Seen on 6 of 52 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 8,
+   "of": 52,
+   "says": "A card or sheet sits on top of the player and covers the media or its controls.",
+   "why": "A card or sheet sits on top of the player: the Close card covers most of the artwork on Rebel Girls, and the Options sheet covers the lower half of the video on Powder. Seen on 8 of 52 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 3,
+   "of": 52,
+   "says": "Small, faint caption text sits on a dark picture and is hard to read.",
+   "why": "Small, low-contrast caption text on a dark picture is hard to read. Seen on 3 of 52 checked screens."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 39,
+   "of": 52,
+   "low": 0.62,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No title or name of what is playing.",
+   "why": "39 of 52 checked screens have \"Title or name of what is playing\"."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 48,
+   "of": 52,
+   "low": 0.82,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "No large video, artwork or photo.",
+   "why": "48 of 52 checked screens have \"Large video, artwork or photo\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 38,
+   "of": 52,
+   "low": 0.6,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No icons for share, like, queue, cast or more.",
+   "why": "38 of 52 checked screens have \"Icons for share, like, queue, cast or more\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 32,
+   "of": 52,
+   "low": 0.48,
+   "severity": "hint",
+   "agreement": 0.86,
+   "says": "No scrub bar or waveform to show progress.",
+   "why": "32 of 52 checked screens have \"Scrub bar or waveform\"."
+  },
+  {
+   "id": "position/7",
+   "kind": "convention",
+   "test": "position",
+   "part": 7,
+   "third": "top",
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 0.86,
+   "says": "The down arrow to minimize sits below the top third of the screen.",
+   "why": "Of the 15 screens that have \"Down arrow at the top left to minimize\", 15 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 35,
+   "of": 39,
+   "low": 0.76,
+   "says": "More than one title for what is playing.",
+   "why": "Of the 39 screens that have \"Title or name of what is playing\", 35 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 46,
+   "of": 48,
+   "low": 0.86,
+   "says": "More than one large video, artwork or photo.",
+   "why": "Of the 48 screens that have \"Large video, artwork or photo\", 46 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 32,
+   "of": 32,
+   "low": 0.89,
+   "says": "More than one scrub bar or waveform.",
+   "why": "Of the 32 screens that have \"Scrub bar or waveform\", 32 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 28,
+   "of": 28,
+   "low": 0.88,
+   "says": "More than one play or pause button.",
+   "why": "Of the 28 screens that have \"Play or pause button\", 28 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 15,
+   "of": 15,
+   "low": 0.8,
+   "says": "More than one down arrow to minimize.",
+   "why": "Of the 15 screens that have \"Down arrow at the top left to minimize\", 15 show exactly one."
+  },
+  {
+   "id": "v1/exempt/7",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v1",
+   "part": 7,
+   "exempts": [
+    "position/7"
+   ],
+   "severity": null,
+   "seen": 4,
+   "of": 28,
+   "low": 0.06,
+   "says": "Full-screen video screens are not checked for \"Down arrow at the top left to minimize\".",
+   "why": "Only 4 of 28 Full-screen video screens have it, so position/7 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 12,
+   "of": 15,
+   "low": 0.55,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "An audio screen with no play or pause button.",
+   "why": "12 of 15 Audio with artwork screens have \"Play or pause button\"."
+  },
+  {
+   "id": "v2/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 6,
+   "seen": 12,
+   "of": 15,
+   "low": 0.55,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "An audio screen with no time readout beside the scrub bar.",
+   "why": "12 of 15 Audio with artwork screens have \"Time readout (elapsed and remaining)\"."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

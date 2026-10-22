@@ -1,0 +1,306 @@
+{
+ "type": "splash",
+ "name": "Splash",
+ "n_read": 64,
+ "n_type": 59,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "Nothing to tap",
+   "key_text": false
+  },
+  "2": {
+   "name": "Logo or wordmark near the center",
+   "key_text": false
+  },
+  "3": {
+   "name": "Flat color or soft gradient fills the screen",
+   "key_text": false
+  },
+  "4": {
+   "name": "Saturated or dark brand color (not white or grey)",
+   "key_text": false
+  },
+  "5": {
+   "name": "One line of text under the logo",
+   "key_text": true
+  },
+  "6": {
+   "name": "Loading cue (dots or a message)",
+   "key_text": true
+  },
+  "7": {
+   "name": "Small print at the bottom",
+   "key_text": true
+  },
+  "8": {
+   "name": "System dialog on top of the splash",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Logo alone on color",
+   "lead": "Logo alone on a flat color",
+   "n": 33,
+   "expect": [
+    "One logo or wordmark in the middle of the screen",
+    "One flat color or soft gradient behind it",
+    "No tagline, loading cue or small print",
+    "Nothing to tap"
+   ]
+  },
+  "v2": {
+   "name": "Logo with extra text",
+   "lead": "Logo with a line of text",
+   "n": 14,
+   "expect": [
+    "A logo or wordmark on every screen",
+    "A tagline under the logo or small print at the bottom",
+    "A saturated or dark brand color behind it",
+    "Nothing to tap"
+   ]
+  },
+  "v3": {
+   "name": "Logo with a loading cue",
+   "lead": "Logo with a loading cue",
+   "n": 3,
+   "expect": []
+  },
+  "v4": {
+   "name": "Greeting text with no logo",
+   "lead": "Greeting text with no logo",
+   "n": 2,
+   "expect": []
+  }
+ },
+ "key_text": [
+  5,
+  6,
+  7
+ ],
+ "not_checked": [
+  "How long the splash stays and what it hands off to: one screenshot shows a single moment.",
+  "Motion in the logo or the loading cue, and any sound.",
+  "Whether the launch image matches the first screen of the app, so the switch does not flash."
+ ],
+ "candidates": [
+  {
+   "name": "Wordmark over a picture or pattern",
+   "count": 2
+  },
+  {
+   "name": "Seasonal illustration",
+   "count": 2
+  },
+  {
+   "name": "Small icon on blank grey",
+   "count": 2
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 59,
+   "says": "A system prompt sits on top of the splash before the app has shown anything of itself.",
+   "why": "A system sign-in prompt lands on top of the splash before the person has seen anything of the app. Seen on 1 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 2,
+   "of": 59,
+   "says": "Only a small app icon sits in a corner of an empty field, like an unfinished launch image.",
+   "why": "Only a small app icon sits at the top left of a grey field. It reads as an unfinished launch image. Seen on 2 of 59 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 2,
+   "of": 59,
+   "says": "Text only, with no logo and no loading cue, so nothing says whether to wait or tap.",
+   "why": "A text-only screen with no logo and no cue. Nothing says whether to wait or tap. Seen on 2 of 59 checked screens."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 55,
+   "of": 59,
+   "low": 0.84,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No logo or wordmark on the screen.",
+   "why": "55 of 59 checked screens have \"Logo or wordmark near the center\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 56,
+   "of": 59,
+   "low": 0.86,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "Something on the screen can be tapped.",
+   "why": "56 of 59 checked screens have \"Nothing to tap\"."
+  },
+  {
+   "id": "presence/4",
+   "kind": "convention",
+   "test": "presence",
+   "part": 4,
+   "seen": 41,
+   "of": 59,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The color behind the logo is white, grey or mixed, not one saturated or dark brand color.",
+   "why": "41 of 59 checked screens have \"Saturated or dark brand color (not white or grey)\"."
+  },
+  {
+   "id": "presence/3",
+   "kind": "convention",
+   "test": "presence",
+   "part": 3,
+   "seen": 50,
+   "of": 59,
+   "low": 0.73,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A texture, picture or pattern fills the screen instead of one flat color or a soft gradient.",
+   "why": "50 of 59 checked screens have \"Flat color or soft gradient fills the screen\"."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "mid",
+   "seen": 48,
+   "of": 55,
+   "low": 0.76,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The logo or wordmark sits outside the middle third of the screen.",
+   "why": "Of the 55 screens that have \"Logo or wordmark near the center\", 48 put it in the mid third."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 55,
+   "of": 55,
+   "low": 0.93,
+   "says": "More than one logo or wordmark on the screen.",
+   "why": "Of the 55 screens that have \"Logo or wordmark near the center\", 55 show exactly one."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

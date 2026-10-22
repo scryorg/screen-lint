@@ -1,0 +1,442 @@
+{
+ "type": "share",
+ "name": "Share",
+ "n_read": 64,
+ "n_type": 58,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "A way out (X, back, Cancel or Done)",
+   "key_text": false
+  },
+  "2": {
+   "name": "Row of app icons to send to",
+   "key_text": false
+  },
+  "3": {
+   "name": "Link or code shown on the screen, or a copy action",
+   "key_text": true
+  },
+  "4": {
+   "name": "Preview of what is being shared",
+   "key_text": false
+  },
+  "5": {
+   "name": "Reward stated in words or numbers",
+   "key_text": true
+  },
+  "6": {
+   "name": "Bottom sheet over a dimmed screen",
+   "key_text": false
+  },
+  "7": {
+   "name": "Wide button for the main action",
+   "key_text": true
+  },
+  "8": {
+   "name": "How-it-works or rules text",
+   "key_text": true
+  },
+  "9": {
+   "name": "Referral tracking (counts or history)",
+   "key_text": true
+  },
+  "10": {
+   "name": "Short confirmation toast",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Share sheet over content",
+   "lead": "Share sheet over the content",
+   "n": 17,
+   "expect": [
+    "A bottom sheet over a dimmed screen",
+    "A row of app icons to send to",
+    "A way out: X, back, Cancel or Done",
+    "A wide button for the main action"
+   ]
+  },
+  "v2": {
+   "name": "Referral page",
+   "lead": "Referral page",
+   "n": 20,
+   "expect": [
+    "A reward stated in words or numbers",
+    "A way out, usually in the top third",
+    "A wide button for the main action",
+    "A full page, not a sheet over a dimmed screen"
+   ]
+  },
+  "v3": {
+   "name": "Preview card plus targets",
+   "lead": "Preview card plus targets",
+   "n": 12,
+   "expect": [
+    "A preview of what is being shared, in the middle third",
+    "A way out, usually in the top third",
+    "No reward text and no referral tracking"
+   ]
+  },
+  "v4": {
+   "name": "Pick people to invite",
+   "lead": "Pick people to invite",
+   "n": 10,
+   "expect": [
+    "A way out, usually in the top third",
+    "No row of app icons to send to",
+    "No reward text and no referral tracking"
+   ]
+  }
+ },
+ "key_text": [
+  3,
+  5,
+  7,
+  8,
+  9
+ ],
+ "not_checked": [
+  "What happens after the tap: the sheet opening, the link copying or the confirmation. One screen cannot show it.",
+  "A link or code that sits below the fold on a referral page. Only what is in view is judged.",
+  "Whether the shared item, the reward and the link match each other."
+ ],
+ "candidates": [
+  {
+   "name": "Invite collaborator intro",
+   "count": 3
+  }
+ ],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 5,
+   "of": 58,
+   "says": "A page whose job is sharing has no link, code, app row or share button in view.",
+   "why": "A page whose job is sharing shows no share control in view. Seen on 5 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 5,
+   "of": 58,
+   "says": "The sheet top edge cuts a line of the page text off in the middle of a sentence.",
+   "why": "The sheet covers the page text and cuts a sentence off in the middle. Seen on 5 of 58 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 5,
+   "of": 58,
+   "says": "Small dim text is hard to read against a dark or coloured background.",
+   "why": "Small dim text on a dark or coloured background is hard to read. Seen on 5 of 58 checked screens."
+  },
+  {
+   "id": "presence/7",
+   "kind": "convention",
+   "test": "presence",
+   "part": 7,
+   "seen": 37,
+   "of": 58,
+   "low": 0.51,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No wide button for the main action.",
+   "why": "37 of 58 checked screens have \"Wide button for the main action\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 48,
+   "of": 58,
+   "low": 0.71,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No way out: no X, back, Cancel or Done.",
+   "why": "48 of 58 checked screens have \"A way out (X, back, Cancel or Done)\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "top",
+   "seen": 40,
+   "of": 48,
+   "low": 0.7,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The way out is not in the top third.",
+   "why": "Of the 48 screens that have \"A way out (X, back, Cancel or Done)\", 40 put it in the top third."
+  },
+  {
+   "id": "position/4",
+   "kind": "convention",
+   "test": "position",
+   "part": 4,
+   "third": "mid",
+   "seen": 18,
+   "of": 21,
+   "low": 0.65,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The preview of what is being shared is not in the middle third.",
+   "why": "Of the 21 screens that have \"Preview of what is being shared\", 18 put it in the mid third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 42,
+   "of": 48,
+   "low": 0.75,
+   "says": "More than one way out is drawn.",
+   "why": "Of the 48 screens that have \"A way out (X, back, Cancel or Done)\", 42 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 17,
+   "of": 18,
+   "low": 0.74,
+   "says": "The app icons are split over more than one row.",
+   "why": "Of the 18 screens that have \"Row of app icons to send to\", 17 show exactly one."
+  },
+  {
+   "id": "count/4",
+   "kind": "convention",
+   "test": "count",
+   "part": 4,
+   "severity": "hint",
+   "seen": 20,
+   "of": 21,
+   "low": 0.77,
+   "says": "More than one preview of what is being shared.",
+   "why": "Of the 21 screens that have \"Preview of what is being shared\", 20 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 15,
+   "of": 17,
+   "low": 0.66,
+   "says": "The reward is stated in more than one place.",
+   "why": "Of the 17 screens that have \"Reward stated in words or numbers\", 15 show exactly one."
+  },
+  {
+   "id": "count/7",
+   "kind": "convention",
+   "test": "count",
+   "part": 7,
+   "severity": "hint",
+   "seen": 33,
+   "of": 37,
+   "low": 0.75,
+   "says": "More than one wide button competes for the main action.",
+   "why": "Of the 37 screens that have \"Wide button for the main action\", 33 show exactly one."
+  },
+  {
+   "id": "v1/presence/2",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 2,
+   "seen": 12,
+   "of": 17,
+   "low": 0.47,
+   "severity": "hint",
+   "agreement": 1.0,
+   "says": "The share sheet has no row of app icons to send to.",
+   "why": "12 of 17 Share sheet over content screens have \"Row of app icons to send to\"."
+  },
+  {
+   "id": "v1/presence/6",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 6,
+   "seen": 14,
+   "of": 17,
+   "low": 0.59,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The share sheet is not a bottom sheet over a dimmed screen.",
+   "why": "14 of 17 Share sheet over content screens have \"Bottom sheet over a dimmed screen\"."
+  },
+  {
+   "id": "v2/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v2",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 1,
+   "of": 20,
+   "low": 0.01,
+   "says": "Referral page screens are not checked for \"Preview of what is being shared\".",
+   "why": "Only 1 of 20 Referral page screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "v2/presence/5",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v2",
+   "part": 5,
+   "seen": 16,
+   "of": 20,
+   "low": 0.58,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The referral page states no reward in words or numbers.",
+   "why": "16 of 20 Referral page screens have \"Reward stated in words or numbers\"."
+  },
+  {
+   "id": "v3/presence/4",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v3",
+   "part": 4,
+   "seen": 12,
+   "of": 12,
+   "low": 0.76,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No preview of what is being shared.",
+   "why": "12 of 12 Preview card plus targets screens have \"Preview of what is being shared\"."
+  },
+  {
+   "id": "v4/exempt/4",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 4,
+   "exempts": [
+    "position/4"
+   ],
+   "severity": null,
+   "seen": 2,
+   "of": 10,
+   "low": 0.06,
+   "says": "Pick people to invite screens are not checked for \"Preview of what is being shared\".",
+   "why": "Only 2 of 10 Pick people to invite screens have it, so position/4 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}

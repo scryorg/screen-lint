@@ -1,0 +1,346 @@
+{
+ "type": "gallery",
+ "name": "Gallery",
+ "n_read": 64,
+ "n_type": 41,
+ "grades": "A: no errors and at most 1 warning. B: no errors. C: 1 error. D: 2 errors. F: 3 or more. Each rule counts once, however many places it fires. Hints never count.",
+ "parts": {
+  "1": {
+   "name": "One large photo that fills most of the screen",
+   "key_text": false
+  },
+  "2": {
+   "name": "Close or back control",
+   "key_text": false
+  },
+  "3": {
+   "name": "Caption, credit or handle that goes with the photo",
+   "key_text": true
+  },
+  "4": {
+   "name": "Black or very dark backdrop",
+   "key_text": false
+  },
+  "5": {
+   "name": "Position counter or page dots",
+   "key_text": true
+  },
+  "6": {
+   "name": "One action button",
+   "key_text": true
+  },
+  "7": {
+   "name": "Icons for share, favorite, flag or delete",
+   "key_text": false
+  },
+  "8": {
+   "name": "Bottom tab bar still visible",
+   "key_text": false
+  }
+ },
+ "variants": {
+  "v1": {
+   "name": "Photo with a credit",
+   "lead": "Full-screen photo with a credit",
+   "n": 22,
+   "expect": [
+    "One large photo in the middle of the screen",
+    "A close or back control at the top",
+    "A caption or credit, most often below the photo",
+    "A black or very dark backdrop around the photo"
+   ]
+  },
+  "v2": {
+   "name": "Photo carousel with dots",
+   "lead": "Photo carousel with dots",
+   "n": 7,
+   "expect": []
+  },
+  "v3": {
+   "name": "Photo with one button",
+   "lead": "Photo with one button",
+   "n": 6,
+   "expect": []
+  },
+  "v4": {
+   "name": "In-app thumbnail grid",
+   "lead": "Thumbnail grid inside the app",
+   "n": 8,
+   "expect": [
+    "A grid of small photo tiles, not one large photo",
+    "A back or close control at the top",
+    "A title row or app header above the tiles"
+   ]
+  }
+ },
+ "key_text": [
+  3,
+  5,
+  6
+ ],
+ "not_checked": [
+  "What happens after a tap: swiping to the next photo, pinching to zoom or closing the viewer. One screenshot cannot show motion.",
+  "Whether the caption and the counter change with the photo as the person moves through the set."
+ ],
+ "candidates": [],
+ "rules": [
+  {
+   "id": "pitfall/1",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "1",
+   "severity": "error",
+   "seen": 1,
+   "of": 41,
+   "says": "The close or back icon is small and hugs the edge of the screen.",
+   "why": "The close icon is small and sits at the very edge of the screen. Seen on 1 of 41 checked screens."
+  },
+  {
+   "id": "pitfall/2",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "2",
+   "severity": "error",
+   "seen": 5,
+   "of": 41,
+   "says": "The photos fill only the top part and the rest of the screen is empty.",
+   "why": "The photos fill only the top part and the rest of the screen is blank white. Seen on 5 of 41 checked screens."
+  },
+  {
+   "id": "pitfall/3",
+   "kind": "pitfall",
+   "test": "reader",
+   "pitfall": "3",
+   "severity": "error",
+   "seen": 1,
+   "of": 41,
+   "says": "The only way out is a Close button whose grey label on a pale box is easy to miss.",
+   "why": "The Close button is the only way out, and it is grey text on a light grey box that is easy to miss. Seen on 1 of 41 checked screens."
+  },
+  {
+   "id": "presence/2",
+   "kind": "convention",
+   "test": "presence",
+   "part": 2,
+   "seen": 37,
+   "of": 41,
+   "low": 0.77,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No close or back control.",
+   "why": "37 of 41 checked screens have \"Close or back control\"."
+  },
+  {
+   "id": "presence/1",
+   "kind": "convention",
+   "test": "presence",
+   "part": 1,
+   "seen": 33,
+   "of": 41,
+   "low": 0.66,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "No single large photo fills most of the screen.",
+   "why": "33 of 41 checked screens have \"One large photo that fills most of the screen\"."
+  },
+  {
+   "id": "position/1",
+   "kind": "convention",
+   "test": "position",
+   "part": 1,
+   "third": "mid",
+   "seen": 31,
+   "of": 33,
+   "low": 0.8,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The large photo sits in the top or bottom third, not in the middle.",
+   "why": "Of the 33 screens that have \"One large photo that fills most of the screen\", 31 put it in the mid third."
+  },
+  {
+   "id": "position/2",
+   "kind": "convention",
+   "test": "position",
+   "part": 2,
+   "third": "top",
+   "seen": 36,
+   "of": 37,
+   "low": 0.86,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "The close or back control is not in the top third.",
+   "why": "Of the 37 screens that have \"Close or back control\", 36 put it in the top third."
+  },
+  {
+   "id": "count/1",
+   "kind": "convention",
+   "test": "count",
+   "part": 1,
+   "severity": "hint",
+   "seen": 32,
+   "of": 33,
+   "low": 0.85,
+   "says": "More than one large photo competes for the screen.",
+   "why": "Of the 33 screens that have \"One large photo that fills most of the screen\", 32 show exactly one."
+  },
+  {
+   "id": "count/2",
+   "kind": "convention",
+   "test": "count",
+   "part": 2,
+   "severity": "hint",
+   "seen": 37,
+   "of": 37,
+   "low": 0.91,
+   "says": "More than one close or back control.",
+   "why": "Of the 37 screens that have \"Close or back control\", 37 show exactly one."
+  },
+  {
+   "id": "count/3",
+   "kind": "convention",
+   "test": "count",
+   "part": 3,
+   "severity": "hint",
+   "seen": 16,
+   "of": 20,
+   "low": 0.58,
+   "says": "More than one caption or credit is drawn for the photo.",
+   "why": "Of the 20 screens that have \"Caption, credit or handle that goes with the photo\", 16 show exactly one."
+  },
+  {
+   "id": "count/5",
+   "kind": "convention",
+   "test": "count",
+   "part": 5,
+   "severity": "hint",
+   "seen": 15,
+   "of": 16,
+   "low": 0.72,
+   "says": "More than one position counter or row of page dots.",
+   "why": "Of the 16 screens that have \"Position counter or page dots\", 15 show exactly one."
+  },
+  {
+   "id": "v1/presence/3",
+   "kind": "variant",
+   "test": "v_presence",
+   "variant": "v1",
+   "part": 3,
+   "seen": 17,
+   "of": 22,
+   "low": 0.57,
+   "severity": "warn",
+   "agreement": 1.0,
+   "says": "A full-screen photo has no caption or credit with it.",
+   "why": "17 of 22 Photo with a credit screens have \"Caption, credit or handle that goes with the photo\"."
+  },
+  {
+   "id": "v4/exempt/1",
+   "kind": "exempt",
+   "test": "exempt",
+   "variant": "v4",
+   "part": 1,
+   "exempts": [
+    "presence/1",
+    "position/1"
+   ],
+   "severity": null,
+   "seen": 0,
+   "of": 8,
+   "low": 0.0,
+   "says": "In-app thumbnail grid screens are not checked for \"One large photo that fills most of the screen\".",
+   "why": "Only 0 of 8 In-app thumbnail grid screens have it, so presence/1 and position/1 does not apply to a screen of this variant."
+  },
+  {
+   "id": "platform/text-contrast",
+   "kind": "platform",
+   "test": "text_contrast",
+   "severity": "error",
+   "says": "Text or a close control is too faint against what is behind it.",
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+  },
+  {
+   "id": "platform/text-size",
+   "kind": "platform",
+   "test": "text_size",
+   "severity": "warn",
+   "says": "Text is smaller than 11 pt.",
+   "why": "Apple lists 11 pt as the smallest text size on iOS. Measured from the height of each line, so it is about right, not exact. Checked on the parts marked as key text."
+  },
+  {
+   "id": "platform/safe-area",
+   "kind": "platform",
+   "test": "safe_area",
+   "severity": "warn",
+   "says": "A control sits under the status bar or the home indicator.",
+   "why": "The status bar row at the top and the bottom 34 pt, where the home indicator sits, belong to the system on phones without a home button. Flagged when a control reaches the status bar row or comes within 17 pt of the bottom edge, so a button that only touches the area is not counted."
+  },
+  {
+   "id": "platform/target-size",
+   "kind": "platform",
+   "test": "target_size",
+   "severity": "hint",
+   "says": "A close or back control is drawn smaller than 13 pt.",
+   "why": "Apple asks for a 44 x 44 pt tap area. The standard close X in a bar is drawn about 13 to 17 pt across inside that area, so only a smaller drawing is flagged. A screenshot cannot show the tap area itself, so this is a hint."
+  }
+ ],
+ "shape": {
+  "parts": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "variants": [
+   "v1",
+   "v2",
+   "v3",
+   "v4"
+  ],
+  "pitfalls": [
+   "1",
+   "2",
+   "3"
+  ],
+  "type_keys": [
+   "splash",
+   "welcome",
+   "sign-in",
+   "verify",
+   "permission",
+   "setup",
+   "home",
+   "feed",
+   "catalog",
+   "search",
+   "filter",
+   "map",
+   "detail",
+   "article",
+   "player",
+   "gallery",
+   "profile",
+   "chat",
+   "inbox",
+   "compose",
+   "camera",
+   "form",
+   "share",
+   "calendar",
+   "stats",
+   "activity",
+   "list",
+   "notifications",
+   "settings",
+   "account",
+   "help",
+   "menu",
+   "paywall",
+   "checkout",
+   "confirmation"
+  ]
+ }
+}
