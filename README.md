@@ -100,3 +100,7 @@ Rules are for iPhone app screens only, not web pages, iPad or desktop apps.
 | `types/<t>.md` | each type's parts, subtypes and pitfalls |
 | `rules/<t>.json` | the rules the linter applies for each type |
 | `scripts/` | `prep.py`, `check_obs.py`, `lint.py`, `overlay.py`, `pixels.py` |
+
+## License
+
+MIT. See `LICENSE`.
