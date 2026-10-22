@@ -18,6 +18,7 @@ STATES = ('normal', 'empty', 'loading', 'error', 'dimmed')
 ROLES = ('primary', 'secondary', 'close', 'back', 'field')
 KEYS = ('id', 'type', 'is_type', 'instead', 'variants', 'new_variant', 'state', 'dark', 'parts', 'controls',
         'pitfalls', 'extra', 'notes')
+MARKS = ('inactive', 'placeholder')   # OCR lines of greyed-out control labels, and of placeholder text
 
 
 def load_rules(t):
@@ -53,7 +54,7 @@ def problems(obs_path, ocr_path):
     bad = [f'missing "{k}"' for k in KEYS if k not in o]
     if bad:
         return bad
-    bad += [f'unknown key "{k}"' for k in o if k not in KEYS]
+    bad += [f'unknown key "{k}"' for k in o if k not in KEYS + MARKS]
     R = load_rules(o['type'])
     if R is None:
         return bad + [f'type is {o["type"]!r}, which is not one of the 35 type keys in references/types.md']
@@ -89,8 +90,8 @@ def problems(obs_path, ocr_path):
         keys = sh['type_keys'] + ['other']
         if o['instead'] not in keys or o['instead'] == t:
             bad.append(f'is_type is false: "instead" must be one of the other type keys or "other", not {o["instead"]!r}')
-        for k in ('variants', 'controls', 'extra', 'parts', 'pitfalls'):
-            if o[k]:
+        for k in ('variants', 'controls', 'extra', 'parts', 'pitfalls') + MARKS:
+            if o.get(k):
                 bad.append(f'is_type is false: "{k}" must stay empty')
         if o['new_variant']:
             bad.append('is_type is false: "new_variant" must stay ""')
@@ -140,6 +141,11 @@ def problems(obs_path, ocr_path):
             bad.append(f'pitfalls["{i}"] needs "seen": true or false and "evidence": text')
         elif q['seen'] and not q.get('evidence'):
             bad.append(f'pitfalls["{i}"] is seen: say in "evidence" what shows it')
+    # greyed-out labels and placeholder text, by OCR line
+    for k in MARKS:
+        refs(k, o.get(k, []))
+    if set(o.get('inactive', [])) & set(o.get('placeholder', [])):
+        bad.append('a line is either a greyed-out label (inactive) or placeholder text, not both')
     # extra
     if len(o['extra']) > 3 or not all(isinstance(x, str) and x and len(x.split()) <= 12 for x in o['extra']):
         bad.append('extra holds up to 3 short phrases (12 words at most each)')

@@ -36,6 +36,8 @@ you do not judge. The scripts do the measuring (contrast, sizes, positions) and 
   },
   "controls": [{"role": "primary", "box": [6, 86, 94, 92], "lines": [14]}],
   "pitfalls": {"1": {"seen": false, "evidence": ""}},
+  "inactive": [],
+  "placeholder": [],
   "extra": [],
   "notes": ""
 }
@@ -48,7 +50,8 @@ percent of the whole screen's width and height (0 to 100), read off the grid, ti
 - **is_type**: true when the screen does the job the type section gives under "What it is for". The type came
   from a look at the picture, so check it now. False when it is another type: `instead` is the best key from
   `references/types.md` (or `other`), and every other field keeps its empty value: `variants` `[]`, `new_variant`
-  `""`, `state` `"normal"`, `dark` false, `parts` `{}`, `controls` `[]`, `pitfalls` `{}`, `extra` `[]`. `notes` may say why.
+  `""`, `state` `"normal"`, `dark` false, `parts` `{}`, `controls` `[]`, `pitfalls` `{}`, `inactive` `[]`,
+  `placeholder` `[]`, `extra` `[]`. `notes` may say why.
   When true, `instead` is `""`. `lint.py` grades nothing for a false and exits 3: go back to the classifier with
   the type you named.
 - **variants**: every listed subtype (`v1`, `v2`, ...) the screen is: usually one, several when they combine.
@@ -73,6 +76,12 @@ percent of the whole screen's width and height (0 to 100), read off the grid, ti
   indicator. `[]` when there are none.
 - **pitfalls**: every pitfall in the type section, by its number: `seen` true only when the screen clearly shows
   it, with `evidence` one short sentence naming what you see; else `{"seen": false, "evidence": ""}`.
+- **inactive**: OCR line numbers of the labels of greyed-out controls, ones that cannot be tapped yet (a Continue
+  button pale until a field is filled, a dimmed Send). Their contrast is not measured: accessibility guidelines leave
+  out controls that cannot be used. Only when the screen clearly shows the control is off; `[]` otherwise.
+- **placeholder**: OCR line numbers of placeholder text, the grey prompt inside an empty field that goes away when
+  typing starts ("Email", "Search", "Write a message"). Its contrast is a hint only. Not a field's label above it,
+  not text someone has typed. `[]` when none.
 - **extra**: up to 3 short phrases (12 words at most) for notable things the parts table has no row for, a habit
   of this screen. `[]` when none.
 - **notes**: one sentence when something was hard to decide or the OCR misread a line you used; `""` otherwise.

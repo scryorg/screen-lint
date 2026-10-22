@@ -88,10 +88,12 @@ def lint_screen(R, o, ocr, img):
             for x in r['exempts']:
                 exempt.setdefault(x, set()).add(r['variant'])
     dimmed = o['state'] == 'dimmed'
+    # lines the reader marked: the label of a greyed-out control (not measured), placeholder text in an empty field (a hint)
+    inactive, placeholder = set(o.get('inactive', [])), set(o.get('placeholder', []))
 
-    def find(r, says=None, boxes=None, value=None, severity=None):
+    def find(r, says=None, boxes=None, value=None, severity=None, lines=None):
         out.append({'rule': r['id'], 'severity': severity or r['severity'], 'says': says or r['says'], 'why': r['why'],
-                    'boxes': [[int(v) for v in b] for b in boxes or [] if b], 'value': value})
+                    'boxes': [[int(v) for v in b] for b in boxes or [] if b], 'value': value, 'lines': lines or []})
 
     # the controls, as the reader listed them, with the drawn glyph or button found from the pixels
     ctl = []
@@ -135,9 +137,11 @@ def lint_screen(R, o, ocr, img):
                 for c in ctl:
                     if c['role'] == 'primary':
                         for ln in c['lines']:
+                            if ln['i'] in inactive:
+                                continue
                             v = safe(text_contrast, img, ln['box'], s)
                             if v is not None and v < 3 and not safe(busy, img, ln['box'], s):
-                                find(r, boxes=[ln['box']], value=round(v, 1))
+                                find(r, boxes=[ln['box']], value=round(v, 1), lines=[ln['i']])
         elif r['kind'] in ('convention', 'variant'):
             k = r.get('part')
             skip = bool(set(o['variants']) & exempt.get(r['id'], set()))
@@ -181,27 +185,48 @@ def lint_screen(R, o, ocr, img):
         for what, g, bold in items:
             g = [ln for ln in g if ln['i'] not in judged]
             judged.update(ln['i'] for ln in g)
+            # the guidelines leave out controls that cannot be used yet, so a greyed-out label is not measured
+            if any(ln['i'] in inactive for ln in g):
+                m[f'{what} (greyed out)'] = 'not measured'
+            g = [ln for ln in g if ln['i'] not in inactive]
+            # iOS's own placeholder grey is about 1.7:1 on white, so faint placeholder text is a hint, never a fault
+            for ln in [ln for ln in g if ln['i'] in placeholder]:
+                v = safe(text_contrast, img, ln['box'], s)
+                if v is None or safe(busy, img, ln['box'], s):
+                    continue
+                v = round(v, 1)
+                m[f'{what} placeholder "{ln["text"]}"'] = v
+                if v < (3 if text_pt(ln, s) >= 18 else 4.5):
+                    find(r, f'The placeholder "{ln["text"]}" in an empty field is {v}:1 against its background. '
+                            'A hint only: iOS\'s own placeholder grey is about 1.7:1.', [ln['box']], v, 'hint', [ln['i']])
+            g = [ln for ln in g if ln['i'] not in placeholder]
             if not g:
                 continue
             if any(safe(busy, img, ln['box'], s) for ln in g):
                 m[f'{what}'] = 'busy background'
                 continue
-            vals = [safe(text_contrast, img, ln['box'], s) for ln in g]
-            vals = [v for v in vals if v is not None]
-            if not vals:
+            each = [(ln, safe(text_contrast, img, ln['box'], s)) for ln in g]
+            each = [(ln, v) for ln, v in each if v is not None]
+            if not each:
                 continue
-            v = round(float(np.median(vals)), 1)
+            v = round(float(np.median([v for _, v in each])), 1)
             ln = g[0] if len(g) == 1 else None
             pt = text_pt(g[0], s) if len(g) == 1 else float(np.median([text_pt(x, s) for x in g]))
             large = pt >= 18 or (bold and pt >= 14)
             label = f'"{ln["text"]}"' if ln else 'the typical line'
+            subject = f'The {what} {label}' if ln else f'The typical line of the {what}'
             m[f'{what} {label}'] = v
-            box = union([x['box'] for x in g])
             own = bold and has_test('low_label')
+            # box the lines that are themselves under the bar, not one box around the whole part
+            faint = lambda bar: [x for x, u in each if u < bar][:6] or [x for x, _ in each[:1]]
             if v < 3 and not own:
-                find(r, f'The {what} {label} is {v}:1 against its background, under 3:1, the floor even for large text.', [box], v, 'error')
+                f = faint(3)
+                find(r, f'{subject} is {v}:1 against its background, under 3:1, the floor even for large text.',
+                     [x['box'] for x in f], v, 'error', [x['i'] for x in f])
             elif 3 <= v < 4.5 and not large:
-                find(r, f'The {what} {label} is {v}:1 against its background; text this size needs 4.5:1.', [box], v, 'warn')
+                f = faint(4.5)
+                find(r, f'{subject} is {v}:1 against its background; text this size needs 4.5:1.',
+                     [x['box'] for x in f], v, 'warn', [x['i'] for x in f])
         if not has_test('faint_control'):
             for c in ctl:
                 if c['role'] in ('close', 'back') and c['glyph'] and c['glyph']['contrast'] < 3:

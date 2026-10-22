@@ -95,6 +95,9 @@ missing package, run the single line it prints, normally
   The OCR can split or merge lines: cite the line that covers the thing and put the doubt in `notes`.
 - A dimmed screen (an alert, a sheet's dark layer, a spinner layer over everything) is `state: "dimmed"`; contrast
   is then not measured. A screen that is dark by design is `dark: true`.
+- The label of a greyed-out button that cannot be tapped yet goes in `inactive` (not measured, as the
+  accessibility guidelines allow), and the grey prompt in an empty field in `placeholder` (a hint only). Mark them
+  only when the screen clearly shows it; a quiet but usable button is neither.
 - Describe, do not judge: the reading says what is on the screen; the rules say whether it is enough. Do not set a
   pitfall `seen` to be safe, and do not leave a present part out to avoid a finding.
 - A new subtype or a screen that is more than one subtype is fine; say so in the answer.

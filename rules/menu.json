@@ -470,7 +470,7 @@
    "test": "text_contrast",
    "severity": "error",
    "says": "Text or a close control is too faint against what is behind it.",
-   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern."
+   "why": "Accessibility guidelines ask for 4.5:1, or 3:1 for large text: 18 pt, or 14 pt bold (button labels are bold). Controls, such as a close or back glyph, need 3:1. Below 3:1 is an error; from 3:1 to 4.5:1 on smaller text it is a warning. Checked on the labels of buttons, the lines of the parts marked as key text, and the close and back glyphs. Not checked on a dimmed screen or over a photo or a pattern, or on the label of a greyed-out button (the guidelines leave out controls that cannot be used yet). Faint placeholder text in an empty field is only a hint, since iOS's own placeholder grey is about 1.7:1."
   },
   {
    "id": "platform/text-size",
